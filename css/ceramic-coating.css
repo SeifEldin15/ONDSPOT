@@ -7463,7 +7463,7 @@ figcaption {
   display: flex;
 }
 .input {
-  box-shadow: 0 0 20px -7px var(--form-border), 0 0 0 0 #00d0ff66;
+  box-shadow: 0 0 20px -7px var(--form-border), 0 0 0 0 #e67e0b66;
   border: 1px solid #dadadabd;
   border-radius: 1rem;
   margin-bottom: 0;
@@ -7476,7 +7476,7 @@ figcaption {
 }
 .input:focus {
   border-color: #dadada00;
-  box-shadow: 0 0 0 5px #00d0ff66;
+  box-shadow: 0 0 0 5px #e67e0b66;
 }
 .input::placeholder {
   color: var(--gray900);
@@ -9845,9 +9845,9 @@ figcaption {
 }
 
 .uui-button-6:hover {
-  background-color: #009dc9;
-  border-color: #009dc9;
-  box-shadow: 0 0 20px 5px #00d0ff66, 0 0 0 5px #f2f4f7, 0 0 0 6px #d0d5dd94;
+  background-color: #e67e0b;
+  border-color: #e67e0b;
+  box-shadow: 0 0 20px 5px #e67e0b66, 0 0 0 5px #f2f4f7, 0 0 0 6px #d0d5dd94;
 }
 .uui-button-6.is-button-large {
   grid-column-gap: 0.75rem;
@@ -9873,12 +9873,12 @@ figcaption {
   transition-property: all;
   transition-duration: 0.2s;
   transition-timing-function: ease;
-  box-shadow: 0 0 20px -7px #878f9940, 0 0 #00d0ff66;
+  box-shadow: 0 0 20px -7px #878f9940, 0 0 #e67e0b66;
   color: var(--gray900) !important;
 }
 .input-2:focus {
   border-color: #dadada00;
-  box-shadow: 0 0 0 5px #00d0ff66;
+  box-shadow: 0 0 0 5px #e67e0b66;
 }
 .input-2::placeholder {
   color: #101828;
@@ -10160,9 +10160,9 @@ figcaption {
   box-shadow: 0 0 #0003, 0 0 #f2f4f7, 0 0 #d0d5dd78;
 }
 .uui-button-7:hover {
-  background-color: #009dc9;
-  border-color: #009dc9;
-  box-shadow: 0 0 20px 5px #00d0ff66, 0 0 0 5px #f2f4f7, 0 0 0 6px #d0d5dd94;
+  background-color: #e67e0b;
+  border-color: #e67e0b;
+  box-shadow: 0 0 20px 5px #e67e0b66, 0 0 0 5px #f2f4f7, 0 0 0 6px #d0d5dd94;
 }
 .uui-button-7.is-button-large {
   grid-column-gap: 0.75rem;
@@ -10243,9 +10243,9 @@ figcaption {
   box-shadow: 0 0 #0003, 0 0 #f2f4f7, 0 0 #d0d5dd78;
 }
 .uui-button-8:hover {
-  background-color: #009dc9;
-  border-color: #009dc9;
-  box-shadow: 0 0 20px 5px #00d0ff66, 0 0 0 5px #f2f4f7, 0 0 0 6px #d0d5dd94;
+  background-color: #e67e0b;
+  border-color: #e67e0b;
+  box-shadow: 0 0 20px 5px #e67e0b66, 0 0 0 5px #f2f4f7, 0 0 0 6px #d0d5dd94;
 }
 .uui-button-8.is-button-large {
   grid-column-gap: 0.75rem;
@@ -10977,7 +10977,7 @@ popup-box-botm-cntnt-link-2 {
 .popup-trigger-new-2:hover {
   border-color: var(--primary-blue);
   background-color: var(--primary-blue);
-  box-shadow: 0 0 20px 5px #00d0ff66, 0 0 0 5px var(--gray100),
+  box-shadow: 0 0 20px 5px #e67e0b66, 0 0 0 5px var(--gray100),
     0 0 0 6px #d0d5dd94;
 }
 .popup-trigger-new-2.is-button-large {
@@ -11047,9 +11047,9 @@ popup-box-botm-cntnt-link-2 {
   box-shadow: 0 0 #0003, 0 0 #f2f4f7, 0 0 #d0d5dd78;
 }
 .popup-trigger-color-new:hover {
-  background-color: #009dc9;
-  border-color: #009dc9;
-  box-shadow: 0 0 20px 5px #00d0ff66, 0 0 0 5px #f2f4f7, 0 0 0 6px #d0d5dd94;
+  background-color: #e67e0b;
+  border-color: #e67e0b;
+  box-shadow: 0 0 20px 5px #e67e0b66, 0 0 0 5px #f2f4f7, 0 0 0 6px #d0d5dd94;
 }
 .popup-trigger-color-new.is-button-large {
   grid-column-gap: 0.75rem;
