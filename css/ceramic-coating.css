@@ -7604,6 +7604,7 @@ figcaption {
   background-color: #fff;
   border-radius: 10px;
   padding: 0.25rem 0.65rem;
+  opacity: 0 !important;
   position: absolute;
   inset: auto 1rem 1rem auto;
 }
