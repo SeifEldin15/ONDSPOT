@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Appointment Form</title>
+</head>
+<body>
+    <h1>Test Appointment Booking</h1>
+    
+    <form id="appointment-form">
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+        <button type="submit" id="submit-btn">Schedule Now</button>
+    </form>
+    
+    <div id="error-message" style="display: none; color: red;">
+        <p id="error-text">Error</p>
+    </div>
+    
+    <div id="success-message" style="display: none; color: green;">
+        <p>Success! Your appointment request has been sent.</p>
+    </div>
+    
+    <script>
+        document.getElementById('appointment-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            console.log('Form submitted!');
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const errorDiv = document.getElementById('error-message');
+            const errorText = document.getElementById('error-text');
+            const successDiv = document.getElementById('success-message');
+            const phoneInput = document.getElementById('phone');
+            
+            console.log('Phone input value:', phoneInput.value);
+            
+            // Hide previous messages
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'none';
+            
+            // Disable submit button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            try {
+                const formData = {
+                    phone: phoneInput.value.trim()
+                };
+                
+                console.log('Sending data:', formData);
+                
+                const response = await fetch('/book-appointment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                console.log('Response status:', response.status);
+                const result = await response.json();
+                console.log('Response data:', result);
+                
+                if (result.success) {
+                    console.log('Success! Showing success message');
+                    successDiv.style.display = 'block';
+                    phoneInput.value = ''; // Clear the form
+                } else {
+                    console.log('Server returned error:', result.message);
+                    errorText.textContent = result.message || 'Something went wrong. Please try again.';
+                    errorDiv.style.display = 'block';
+                }
+                
+            } catch (error) {
+                console.error('Network/JS Error:', error);
+                errorText.textContent = 'Network error. Please check your connection and try again.';
+                errorDiv.style.display = 'block';
+            }
+            
+            // Re-enable submit button
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Schedule Now';
+        });
+    </script>
+</body>
+</html>
