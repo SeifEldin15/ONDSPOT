@@ -144,9 +144,6 @@ Desktop.ini
 *.swo
 *~
 
-# Project specific
-# Email configuration (contains sensitive information)
-email-config.js
 
 # Test files (optional - remove if you want to commit test files)
 test-*.js
