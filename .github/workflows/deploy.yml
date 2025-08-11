@@ -3,7 +3,7 @@ name: Deploy to Ubuntu Server
 on:
   push:
     branches:
-      - main  # or your deploy branch
+      - main  # Deployment branch
 
 jobs:
   deploy:
@@ -21,15 +21,26 @@ jobs:
       - name: Deploy to server
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@52.53.124.180 << 'EOF'
+            set -e  # Exit immediately if a command fails
+
             APP_DIR="/home/ubuntu/myapp"
-            
-            # Clone repo if directory does not exist
-            if [ ! -d "$APP_DIR" ]; then
-              git clone git@github.com:YOUR_USERNAME/YOUR_REPO.git "$APP_DIR"
+            REPO_SSH="git@github.com:SeifEldin15/YOUR_REPO.git"
+
+            # Clone the repo if it doesn't exist
+            if [ ! -d "\$APP_DIR/.git" ]; then
+              echo "Cloning repository..."
+              git clone "\$REPO_SSH" "\$APP_DIR"
             fi
 
-            cd "$APP_DIR"
-            git pull origin main
+            cd "\$APP_DIR"
+
+            echo "Pulling latest changes..."
+            git fetch origin main
+            git reset --hard origin/main
+
+            echo "Installing dependencies..."
             npm install --production
+
+            echo "Restarting app with PM2..."
             pm2 restart server.js --name my-node-app || pm2 start server.js --name my-node-app
           EOF
