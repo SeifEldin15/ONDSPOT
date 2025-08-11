@@ -3,7 +3,7 @@ name: Deploy to Ubuntu Server
 on:
   push:
     branches:
-      - main  # Deployment branch
+      - main
 
 jobs:
   deploy:
@@ -21,12 +21,12 @@ jobs:
       - name: Deploy to server
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@52.53.124.180 << 'EOF'
-            set -e  # Exit immediately if a command fails
+            set -e
 
             APP_DIR="/home/ubuntu/myapp"
-            REPO_SSH="git@github.com:SeifEldin15/YOUR_REPO.git"
+            REPO_SSH="git@github.com:SeifEldin15/ONDSPOT.git"
 
-            # Clone the repo if it doesn't exist
+            # Clone repo if not exists
             if [ ! -d "\$APP_DIR/.git" ]; then
               echo "Cloning repository..."
               git clone "\$REPO_SSH" "\$APP_DIR"
@@ -34,7 +34,7 @@ jobs:
 
             cd "\$APP_DIR"
 
-            echo "Pulling latest changes..."
+            echo "Fetching latest changes..."
             git fetch origin main
             git reset --hard origin/main
 
