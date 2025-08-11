@@ -8155,7 +8155,7 @@ figcaption {
 }
 .locations-bg {
   background-color: var(--gray50);
-  background-image: url(https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/670093e83b4fd03467982b74_cutout-car.avif),
+  background-image: url(),
     linear-gradient(180deg, #fbfcfd4d, #fbfcfd99 9%, var(--gray50)),
     url(https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/66fdf6163d8aed57e43f357d_%E2%80%94Pngtree%E2%80%94soap%20or%20beer%20foam_6707302.avif);
   box-shadow: 0 0 0 1px var(--gray50-border-color);
