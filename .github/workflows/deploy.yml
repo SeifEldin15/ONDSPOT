@@ -21,8 +21,15 @@ jobs:
       - name: Deploy to server
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@52.53.124.180 << 'EOF'
-          cd /path/to/your/project
-          git pull origin main
-          npm install --production
-          pm2 restart server.js --name my-node-app || pm2 start server.js --name my-node-app
+            APP_DIR="/home/ubuntu/myapp"
+            
+            # Clone repo if directory does not exist
+            if [ ! -d "$APP_DIR" ]; then
+              git clone git@github.com:YOUR_USERNAME/YOUR_REPO.git "$APP_DIR"
+            fi
+
+            cd "$APP_DIR"
+            git pull origin main
+            npm install --production
+            pm2 restart server.js --name my-node-app || pm2 start server.js --name my-node-app
           EOF
