@@ -1,3 +1,7 @@
+permissions:
+  contents: write
+  deployments: write
+
 name: Deploy to Ubuntu Server
 
 on:
