@@ -18,26 +18,19 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SERVER_SSH_KEY }}
 
-      - name: Deploy to server
-        run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@52.53.124.180 << EOF
-            set -e
-            APP_DIR="/home/ubuntu/myapp"
-            REPO_SSH="git@github.com:SeifEldin15/ONDSPOT.git"
+- name: Deploy to server
+  run: |
+    ssh -o StrictHostKeyChecking=no ubuntu@52.53.124.180 << 'EOF'
+      APP_DIR="/home/ubuntu/myapp"
+      REPO_SSH="git@github.com:SeifEldin15/ONDSPOT.git"
+      
+      # Clone repo if directory does not exist
+      if [ ! -d "$APP_DIR" ]; then
+        git clone "$REPO_SSH" "$APP_DIR"
+      fi
 
-            if [ ! -d "$APP_DIR/.git" ]; then
-              echo "Cloning repository..."
-              git clone "$REPO_SSH" "$APP_DIR"
-            fi
-
-            cd "$APP_DIR"
-            echo "Fetching latest changes..."
-            git fetch origin main
-            git reset --hard origin/main
-
-            echo "Installing dependencies..."
-            npm install --production
-
-            echo "Restarting app via PM2..."
-            pm2 restart server.js --name my-node-app || pm2 start server.js --name my-node-app
-          EOF
+      cd "$APP_DIR"
+      git pull origin main
+      npm install --production
+      pm2 restart server.js --name my-node-app || pm2 start server.js --name my-node-app
+    EOF
