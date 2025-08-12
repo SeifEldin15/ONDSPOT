@@ -10048,6 +10048,7 @@ figcaption {
   display: flex;
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
 }
 .link-block.hero-btn {
   color: var(--white);
