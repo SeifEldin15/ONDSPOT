@@ -552,25 +552,18 @@
                     </div>
                   </div>
                                 <div class="form-block w-form">
-                <form method="post" ms-code-validate-form="" class="form" data-ms-form="signup" name="email-form" data-name="Email Form" id="email-form" redirect="" data-redirect="" data-wf-page-id="6704ca9be183c1354850b076" data-wf-element-id="3c71872d-ee37-e79e-2583-f7d13bfde839">
+                <form method="post" class="form" name="appointment-form" id="appointment-form">
                   <div id="w-node-_3c71872d-ee37-e79e-2583-f7d13bfde83a-3bfde838" class="input-wrap is--cc_hide-tablet">
-                    <input ms-code-phone-number="ca,gb,us" class="input w-input" maxlength="256" name="Phone-3" data-name="Phone 3" placeholder="" minlength="10" type="text" id="Phone-3" data-ms-member="phone" required="" />
-                    <input class="hide w-input" maxlength="256" name="cc_open_phone_hidden_input" data-name="cc_open_phone_hidden_input" placeholder="Example Text" type="text" id="cc_open_phone_hidden_input" />
+                    <input class="input w-input" maxlength="256" name="phone" placeholder="Enter your phone number" minlength="10" type="tel" id="phone" required="" />
                   </div>
-                  <div class="hidden-errors">
+                  <div class="hidden-errors" id="error-message" style="display: none;">
                     <div class="ms-code-validation-error w-richtext">
                       <ul role="list">
-                        <li>Something bad</li>
+                        <li id="error-text">Something went wrong</li>
                       </ul>
                     </div>
-                    <div class="w-embed">
-                      <style>
-                        ul {
-                          padding-left: 0px !important;
-                      </style>
-                    </div>
                   </div>
-                  <input type="submit" data-wait="Please wait..." class="uui-button is-button-large is--cc_hide-tablet w-button" value="Schedule Now" />
+                  <input type="submit" data-wait="Sending..." class="uui-button is-button-large is--cc_hide-tablet w-button" value="Schedule Now" id="submit-btn" />
                 </form>
                 <div class="form_success-wrap w-form-done">
                   <div>Thank you! Your submission has been received!</div>
@@ -6575,6 +6568,7 @@
     <script src="https://cdn.jsdelivr.net/npm/cleave.js@1/dist/cleave.min.js"></script>
     <script>
       $(document).ready(function() {
+        // Handle old ms-code-phone-number inputs (if any exist)
         $('input[ms-code-phone-number]').each(function() {
           var input = this;
           var preferredCountries = $(input).attr('ms-code-phone-number').split(',');
@@ -6607,6 +6601,27 @@
             }
           });
         });
+        
+        // Handle new appointment form phone input
+        const phoneInput = document.getElementById('phone');
+        if (phoneInput) {
+          // Initialize intlTelInput for the appointment form phone input
+          const iti = window.intlTelInput(phoneInput, {
+            onlyCountries: ['us'], // Restrict to US only
+            initialCountry: 'us', // Set default country to United States
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+          });
+          
+          phoneInput.addEventListener('change', function() {
+            var formattedNumber = iti.getNumber(intlTelInputUtils.numberFormat.INTERNATIONAL);
+            phoneInput.value = formattedNumber;
+          });
+          
+          phoneInput.addEventListener('keyup', function() {
+            var formattedNumber = iti.getNumber(intlTelInputUtils.numberFormat.INTERNATIONAL);
+            phoneInput.value = formattedNumber;
+          });
+        }
       });
     </script>
     <!-- [Attributes by Finsweet] Copy to clipboard -->
@@ -6727,17 +6742,32 @@
             if (phoneInput) {
               phoneInput.addEventListener('input', function(e) {
                   let value = e.target.value.replace(/\D/g, ''); // Remove all non-digits
-                }
               });
+            }
+      });
     </script>
     <script>
       const phoneField = document.getElementById("phone-input");
-      phoneField.addEventListener("invalid", function(event) {
-        const v = phoneField.validity;
-        if (v.valueMissing) {
-          phoneField.setCustomValidity("This field is required.");
-        } else if (v.patternMismatch) {
-          phoneField.setCustomValidity("Please Fill out this field.");
+      if (phoneField) {
+        phoneField.addEventListener("invalid", function(event) {
+          const v = phoneField.validity;
+          if (v.valueMissing) {
+            phoneField.setCustomValidity("This field is required.");
+          } else if (v.patternMismatch) {
+            phoneField.setCustomValidity("Please Fill out this field.");
+          } else {
+            phoneField.setCustomValidity("");
+          }
+          // After setting, browser will show message automatically upon submit
+        });
+        phoneField.addEventListener("input", function() {
+          // Clear custom message once the user starts typing
+          phoneField.setCustomValidity("");
+        });
+        // Optional: to show message immediately on blur
+        phoneField.addEventListener("change", () => phoneField.reportValidity());
+      }
+    </script>
         } else {
           phoneField.setCustomValidity("");
         }
@@ -6824,5 +6854,69 @@
     <!-- Gallery code
 <script src="https://xw8v-tcfi-85ay.n7.xano.io/api:scripttagme/dev/Embed-created-10-1-2024-104941-AM_da9c2556-168d-4b6d-9716-811c89a695b0"></script>-->
     <script src="https://cdn.schema-flow.com/script.min.js" type="text/javascript"></script>
+    
+    <!-- Appointment booking form handler -->
+    <script>
+      document.getElementById('appointment-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        console.log('Form submitted!');
+        
+        const submitBtn = document.getElementById('submit-btn');
+        const errorDiv = document.getElementById('error-message');
+        const errorText = document.getElementById('error-text');
+        const phoneInput = document.getElementById('phone');
+        
+        console.log('Phone input value:', phoneInput.value);
+        
+        // Hide any previous errors
+        errorDiv.style.display = 'none';
+        
+        // Disable submit button and show loading state
+        submitBtn.disabled = true;
+        submitBtn.value = 'Sending...';
+        
+        try {
+          const formData = {
+            phone: phoneInput.value.trim()
+          };
+          
+          console.log('Sending data:', formData);
+          
+          const response = await fetch('/book-appointment', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+          });
+          
+          console.log('Response status:', response.status);
+          const result = await response.json();
+          console.log('Response data:', result);
+          
+          if (result.success) {
+            // Show success message
+            console.log('Success! Showing success message');
+            document.querySelector('.form_success-wrap').style.display = 'block';
+            document.querySelector('.form-block').style.display = 'none';
+          } else {
+            // Show error message
+            console.log('Server returned error:', result.message);
+            errorText.textContent = result.message || 'Something went wrong. Please try again.';
+            errorDiv.style.display = 'block';
+          }
+          
+        } catch (error) {
+          console.error('Network/JS Error:', error);
+          errorText.textContent = 'Network error. Please check your connection and try again.';
+          errorDiv.style.display = 'block';
+        }
+        
+        // Re-enable submit button
+        submitBtn.disabled = false;
+        submitBtn.value = 'Schedule Now';
+      });
+    </script>
+    
   </body>
 </html>

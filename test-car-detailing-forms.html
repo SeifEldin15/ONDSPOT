@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Car Detailing Forms</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        .success { color: green; }
+        .error { color: red; }
+        button { margin: 5px; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Test Car Detailing Forms</h1>
+    
+    <div class="test-section">
+        <h2>Test Results</h2>
+        <div id="results"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Manual Tests</h2>
+        <button onclick="testForm1()">Test Form 1 (appointment-form)</button>
+        <button onclick="testForm2()">Test Form 2 (appointment-form-main)</button>
+        <button onclick="openCarDetailingPage()">Open Car Detailing Page</button>
+    </div>
+    
+    <script>
+        function addResult(message, isSuccess = true) {
+            const results = document.getElementById('results');
+            const div = document.createElement('div');
+            div.className = isSuccess ? 'success' : 'error';
+            div.textContent = message;
+            results.appendChild(div);
+        }
+        
+        function testForm1() {
+            addResult('Testing first form (appointment-form)...');
+            
+            // Test if the form exists by making a request to the page
+            fetch('/car-detailing.html')
+                .then(response => response.text())
+                .then(html => {
+                    if (html.includes('id="appointment-form"')) {
+                        addResult('✓ First form found in HTML');
+                    } else {
+                        addResult('✗ First form not found', false);
+                    }
+                    
+                    if (html.includes('id="phone"')) {
+                        addResult('✓ Phone input found for first form');
+                    } else {
+                        addResult('✗ Phone input not found for first form', false);
+                    }
+                })
+                .catch(err => {
+                    addResult('✗ Error testing first form: ' + err.message, false);
+                });
+        }
+        
+        function testForm2() {
+            addResult('Testing second form (appointment-form-main)...');
+            
+            // Test if the form exists by making a request to the page
+            fetch('/car-detailing.html')
+                .then(response => response.text())
+                .then(html => {
+                    if (html.includes('id="appointment-form-main"')) {
+                        addResult('✓ Second form found in HTML');
+                    } else {
+                        addResult('✗ Second form not found', false);
+                    }
+                    
+                    if (html.includes('id="phone-main"')) {
+                        addResult('✓ Phone input found for second form');
+                    } else {
+                        addResult('✗ Phone input not found for second form', false);
+                    }
+                    
+                    if (html.includes("document.getElementById('appointment-form').addEventListener")) {
+                        addResult('✓ JavaScript handler for first form found');
+                    } else {
+                        addResult('✗ JavaScript handler for first form not found', false);
+                    }
+                    
+                    if (html.includes("getElementById('appointment-form-main')")) {
+                        addResult('✓ JavaScript handler for second form found');
+                    } else {
+                        addResult('✗ JavaScript handler for second form not found', false);
+                    }
+                })
+                .catch(err => {
+                    addResult('✗ Error testing second form: ' + err.message, false);
+                });
+        }
+        
+        function openCarDetailingPage() {
+            window.open('/car-detailing.html', '_blank');
+        }
+        
+        // Run initial tests
+        window.onload = function() {
+            addResult('Running initial tests...');
+            testForm1();
+            testForm2();
+        };
+    </script>
+</body>
+</html>

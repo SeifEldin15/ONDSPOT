@@ -551,23 +551,10 @@
                     </div>
                   </div>
                                 <div class="form-block w-form">
-                <form method="post" ms-code-validate-form="" class="form" data-ms-form="signup" name="email-form" data-name="Email Form" id="email-form" redirect="" data-redirect="" data-wf-page-id="6704ca9be183c1354850b076" data-wf-element-id="3c71872d-ee37-e79e-2583-f7d13bfde839">
+                <form method="post" class="form" name="appointment-form" data-name="Appointment Form" id="appointment-form" data-wf-page-id="6704ca9be183c1354850b076" data-wf-element-id="3c71872d-ee37-e79e-2583-f7d13bfde839">
                   <div id="w-node-_3c71872d-ee37-e79e-2583-f7d13bfde83a-3bfde838" class="input-wrap is--cc_hide-tablet">
-                    <input ms-code-phone-number="ca,gb,us" class="input w-input" maxlength="256" name="Phone-3" data-name="Phone 3" placeholder="" minlength="10" type="text" id="Phone-3" data-ms-member="phone" required="" />
+                    <input class="input w-input" maxlength="256" name="Phone" data-name="Phone" placeholder="" minlength="10" type="text" id="Phone" required="" />
                     <input class="hide w-input" maxlength="256" name="cc_open_phone_hidden_input" data-name="cc_open_phone_hidden_input" placeholder="Example Text" type="text" id="cc_open_phone_hidden_input" />
-                  </div>
-                  <div class="hidden-errors">
-                    <div class="ms-code-validation-error w-richtext">
-                      <ul role="list">
-                        <li>Something bad</li>
-                      </ul>
-                    </div>
-                    <div class="w-embed">
-                      <style>
-                        ul {
-                          padding-left: 0px !important;
-                      </style>
-                    </div>
                   </div>
                   <input type="submit" data-wait="Please wait..." class="uui-button is-button-large is--cc_hide-tablet w-button" value="Schedule Now" />
                 </form>
@@ -6315,6 +6302,65 @@ We install systems that go beyond beep‑beep — smart alarms with shock sensor
       });
       // Optional: to show message immediately on blur
       phoneField.addEventListener("change", () => phoneField.reportValidity());
+    </script>
+    <script>
+      // Handle appointment form submission
+      document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById('appointment-form');
+        if (form) {
+          form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitButton = form.querySelector('input[type="submit"]');
+            const originalValue = submitButton.value;
+            submitButton.value = 'Please wait...';
+            submitButton.disabled = true;
+            
+            const phoneInput = form.querySelector('input[name="Phone"]');
+            const phone = phoneInput ? phoneInput.value : '';
+            
+            try {
+              const response = await fetch('/book-appointment', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  phone: phone,
+                  service: 'Alarms'
+                })
+              });
+              
+              const result = await response.json();
+              
+              if (response.ok) {
+                // Show success message
+                const successDiv = form.parentNode.querySelector('.w-form-done');
+                const errorDiv = form.parentNode.querySelector('.w-form-fail');
+                if (successDiv) {
+                  form.style.display = 'none';
+                  successDiv.style.display = 'block';
+                  if (errorDiv) errorDiv.style.display = 'none';
+                }
+              } else {
+                throw new Error(result.error || 'Something went wrong');
+              }
+            } catch (error) {
+              console.error('Error:', error);
+              // Show error message
+              const errorDiv = form.parentNode.querySelector('.w-form-fail');
+              const successDiv = form.parentNode.querySelector('.w-form-done');
+              if (errorDiv) {
+                errorDiv.style.display = 'block';
+                if (successDiv) successDiv.style.display = 'none';
+              }
+            } finally {
+              submitButton.value = originalValue;
+              submitButton.disabled = false;
+            }
+          });
+        }
+      });
     </script>
     <script>
       document.addEventListener("DOMContentLoaded", function() {

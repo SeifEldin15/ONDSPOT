@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test PPF Forms</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        .success { color: green; }
+        .error { color: red; }
+        button { margin: 5px; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Test PPF Page Forms</h1>
+    
+    <div class="test-section">
+        <h2>Test Results</h2>
+        <div id="results"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Manual Tests</h2>
+        <button onclick="testPPFForm()">Test PPF Form</button>
+        <button onclick="openPPFPage()">Open PPF Page</button>
+        <button onclick="testAllPages()">Test All Pages</button>
+    </div>
+    
+    <script>
+        function addResult(message, isSuccess = true) {
+            const results = document.getElementById('results');
+            const div = document.createElement('div');
+            div.className = isSuccess ? 'success' : 'error';
+            div.textContent = message;
+            results.appendChild(div);
+        }
+        
+        function testPPFForm() {
+            addResult('Testing PPF form...');
+            
+            // Test if the form exists by making a request to the page
+            fetch('/ppf.html')
+                .then(response => response.text())
+                .then(html => {
+                    if (html.includes('id="appointment-form"')) {
+                        addResult('✓ PPF form found in HTML');
+                    } else {
+                        addResult('✗ PPF form not found', false);
+                    }
+                    
+                    if (html.includes('id="phone"')) {
+                        addResult('✓ Phone input found for PPF form');
+                    } else {
+                        addResult('✗ Phone input not found for PPF form', false);
+                    }
+                    
+                    if (html.includes("document.getElementById('appointment-form').addEventListener")) {
+                        addResult('✓ JavaScript handler for PPF form found');
+                    } else {
+                        addResult('✗ JavaScript handler for PPF form not found', false);
+                    }
+                    
+                    if (html.includes('id="submit-btn"')) {
+                        addResult('✓ Submit button found for PPF form');
+                    } else {
+                        addResult('✗ Submit button not found for PPF form', false);
+                    }
+                    
+                    if (html.includes('id="error-message"')) {
+                        addResult('✓ Error message container found for PPF form');
+                    } else {
+                        addResult('✗ Error message container not found for PPF form', false);
+                    }
+                })
+                .catch(err => {
+                    addResult('✗ Error testing PPF form: ' + err.message, false);
+                });
+        }
+        
+        function testAllPages() {
+            addResult('Testing all pages...');
+            
+            const pages = ['index.html', 'car-detailing.html', 'ppf.html'];
+            
+            pages.forEach(page => {
+                fetch('/' + page)
+                    .then(response => response.text())
+                    .then(html => {
+                        const hasForm = html.includes('id="appointment-form"');
+                        const hasPhone = html.includes('id="phone"');
+                        const hasJS = html.includes("document.getElementById('appointment-form').addEventListener");
+                        
+                        if (hasForm && hasPhone && hasJS) {
+                            addResult(`✓ ${page} - Form working properly`);
+                        } else {
+                            addResult(`✗ ${page} - Form missing components`, false);
+                        }
+                    })
+                    .catch(err => {
+                        addResult(`✗ Error testing ${page}: ${err.message}`, false);
+                    });
+            });
+        }
+        
+        function openPPFPage() {
+            window.open('/ppf.html', '_blank');
+        }
+        
+        // Run initial test
+        window.onload = function() {
+            addResult('Running initial PPF form test...');
+            testPPFForm();
+        };
+    </script>
+</body>
+</html>
