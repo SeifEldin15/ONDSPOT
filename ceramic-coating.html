@@ -6859,5 +6859,61 @@
     <!-- Gallery code
 <script src="https://xw8v-tcfi-85ay.n7.xano.io/api:scripttagme/dev/Embed-created-10-1-2024-104941-AM_da9c2556-168d-4b6d-9716-811c89a695b0"></script>-->
     <script src="https://cdn.schema-flow.com/script.min.js" type="text/javascript"></script>
+    
+    <!-- Custom form handler for Calendly redirect -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const forms = document.querySelectorAll('#email-form');
+        
+        forms.forEach(form => {
+          form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitButton = form.querySelector('input[type="submit"]');
+            const originalValue = submitButton.value;
+            submitButton.value = 'Please wait...';
+            submitButton.disabled = true;
+            
+            const phoneInput = form.querySelector('input[name="Phone-3"]');
+            const phone = phoneInput ? phoneInput.value : '';
+            
+            try {
+              const response = await fetch('/book-appointment', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  phone: phone,
+                  service: 'Ceramic Coating'
+                })
+              });
+              
+              const result = await response.json();
+              
+              if (response.ok) {
+                // Redirect to Calendly after successful submission
+                window.location.href = 'https://calendly.com/ondspot/mobile-auto-detailing-appointment';
+              } else {
+                throw new Error(result.error || 'Something went wrong');
+              }
+            } catch (error) {
+              console.error('Error:', error);
+              // Show error message
+              const errorDiv = form.parentNode.querySelector('.w-form-fail');
+              const successDiv = form.parentNode.querySelector('.w-form-done');
+              if (errorDiv) {
+                errorDiv.style.display = 'block';
+                if (successDiv) successDiv.style.display = 'none';
+              }
+            } finally {
+              submitButton.value = originalValue;
+              submitButton.disabled = false;
+            }
+          });
+        });
+      });
+    </script>
+    
   </body>
 </html>

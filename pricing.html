@@ -520,7 +520,7 @@
                                     </div>
                                   </div>
                                   <div class="pricing_buttons-wrapper">
-                                    <a data-w-id="64c87c36-3e93-14b2-4431-6d86b9301d2e" href="#" class="uui-button w-inline-block">
+                                    <a data-w-id="64c87c36-3e93-14b2-4431-6d86b9301d2e" href="https://calendly.com/ondspot/mobile-auto-detailing-appointment" class="uui-button w-inline-block">
                                       <div>Schedule Online</div>
                                     </a>
                                   </div>
@@ -685,7 +685,7 @@
                                     </div>
                                   </div>
                                   <div class="pricing_buttons-wrapper">
-                                    <a data-w-id="64c87c36-3e93-14b2-4431-6d86b9301d8c" href="#" class="uui-button w-inline-block">
+                                    <a data-w-id="64c87c36-3e93-14b2-4431-6d86b9301d8c" href="https://calendly.com/ondspot/mobile-auto-detailing-appointment" class="uui-button w-inline-block">
                                       <div>Schedule Online</div>
                                     </a>
                                   </div>
@@ -804,7 +804,7 @@
                                     </div>
                                   </div>
                                   <div class="pricing_buttons-wrapper">
-                                    <a data-w-id="64c87c36-3e93-14b2-4431-6d86b9301de2" href="#" class="uui-button w-inline-block">
+                                    <a data-w-id="64c87c36-3e93-14b2-4431-6d86b9301de2" href="https://calendly.com/ondspot/mobile-auto-detailing-appointment" class="uui-button w-inline-block">
                                       <div>Schedule Online</div>
                                     </a>
                                   </div>
@@ -1090,7 +1090,7 @@
                                       </div>
                                     </div>
                                   </div>
-                                  <a data-w-id="4784fd4d-f591-cb87-0719-22bcede8ec4b" href="#" class="uui-button w-inline-block">
+                                  <a data-w-id="4784fd4d-f591-cb87-0719-22bcede8ec4b" href="https://calendly.com/ondspot/mobile-auto-detailing-appointment" class="uui-button w-inline-block">
                                     <div>Schedule Online</div>
                                   </a>
                                 </div>
@@ -1235,7 +1235,7 @@
                                     </div>
                                   </div>
                                   <div>
-                                    <a data-w-id="4784fd4d-f591-cb87-0719-22bcede8ecb4" href="#" class="uui-button w-inline-block">
+                                    <a data-w-id="4784fd4d-f591-cb87-0719-22bcede8ecb4" href="https://calendly.com/ondspot/mobile-auto-detailing-appointment" class="uui-button w-inline-block">
                                       <div>Schedule Online</div>
                                     </a>
                                   </div>
@@ -1535,7 +1535,7 @@
                                       </div>
                                     </div>
                                   </div>
-                                  <a data-w-id="98549881-664f-cea0-84f9-9a580b6aea04" href="#" class="uui-button w-inline-block">
+                                  <a data-w-id="98549881-664f-cea0-84f9-9a580b6aea04" href="https://calendly.com/ondspot/mobile-auto-detailing-appointment" class="uui-button w-inline-block">
                                     <div>Schedule Online</div>
                                   </a>
                                 </div>
@@ -2826,6 +2826,45 @@
                 }
               });
     </script>
+    
+    <!-- Handle Schedule Online buttons in pricing section -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        // Handle all Schedule Online buttons
+        const scheduleButtons = document.querySelectorAll('a[data-w-id*="64c87c36-3e93-14b2-4431-6d86b9301d"]');
+        
+        scheduleButtons.forEach(button => {
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Redirect to Calendly
+            window.location.href = 'https://calendly.com/ondspot/mobile-auto-detailing-appointment';
+          });
+        });
+        
+        // Also handle other Schedule Online buttons in other tabs
+        const otherScheduleButtons = document.querySelectorAll('a[data-w-id*="4784fd4d-f591-cb87-0719-22bcede8ec"]');
+        
+        otherScheduleButtons.forEach(button => {
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Redirect to Calendly
+            window.location.href = 'https://calendly.com/ondspot/mobile-auto-detailing-appointment';
+          });
+        });
+        
+        // Handle Paint Enhancement tab Schedule Online buttons
+        const paintScheduleButtons = document.querySelectorAll('a[data-w-id*="98549881-664f-cea0-84f9-9a580b6ae"]');
+        
+        paintScheduleButtons.forEach(button => {
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Redirect to Calendly
+            window.location.href = 'https://calendly.com/ondspot/mobile-auto-detailing-appointment';
+          });
+        });
+      });
+    </script>
+    
     <script>
       const phoneField = document.getElementById("phone-input");
       phoneField.addEventListener("invalid", function(event) {
