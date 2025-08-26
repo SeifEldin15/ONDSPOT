@@ -15989,3 +15989,36 @@ popup-box-botm-cntnt-link-2 {
     grid-area: span 1 / span 1 / span 1 / span 1;
   }
 }
+
+/* Responsive styles for locations and map section */
+@media screen and (max-width: 991px) {
+  .div-block-379 {
+    flex-direction: column;
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .locations-bg {
+    flex: none;
+    width: 100%;
+  }
+  
+  .map-container {
+    flex: none !important;
+    width: 100% !important;
+    height: 300px !important;
+    max-width: none !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .div-block-379 {
+    flex-direction: column;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .map-container {
+    height: 250px !important;
+  }
+}

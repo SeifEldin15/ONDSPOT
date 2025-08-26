@@ -6552,6 +6552,8 @@
           </div>
         </footer>
       </main>
+          </div>
+          </div>
 
     <script src="js2/jquery.js?site=66f964cbc508944cf9f57d90" type="text/javascript"></script>
     <script src="js2/webflow.schunk.57d5559d2f0cd9f8.js" type="text/javascript"></script>
@@ -6808,18 +6810,7 @@
         phoneField.addEventListener("change", () => phoneField.reportValidity());
       }
     </script>
-        } else {
-          phoneField.setCustomValidity("");
-        }
-        // After setting, browser will show message automatically upon submit
-      });
-      phoneField.addEventListener("input", function() {
-        // Clear custom message once the user starts typing
-        phoneField.setCustomValidity("");
-      });
-      // Optional: to show message immediately on blur
-      phoneField.addEventListener("change", () => phoneField.reportValidity());
-    </script>
+    
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         const phoneInput = document.querySelector('input[name="Phone"]'); // Change name if needed
