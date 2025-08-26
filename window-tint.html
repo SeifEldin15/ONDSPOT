@@ -4024,7 +4024,7 @@
                     <p class="text-align-center">Once submitted, one of our team members will get back to you within <strong>24 hours</strong> to discuss your Inquiry! </p>
                   </div>
                   <div class="form-block-2 w-form">
-                    <form id="wf-form-Austin-Ceramic-Coating-Inquiry" name="wf-form-Austin-Ceramic-Coating-Inquiry" data-name="Austin Ceramic Coating Inquiry" method="get" class="form-5" data-wf-page-id="6704ca9be183c1354850b076" data-wf-element-id="ccd9eb93-85e1-76ce-9496-91feb556fb43">
+                    <form id="window-tint-quote-form" name="window-tint-quote-form" data-name="Window Tint Quote Request" method="post" class="form-5" data-wf-page-id="6704ca9be183c1354850b076" data-wf-element-id="ccd9eb93-85e1-76ce-9496-91feb556fb43">
                       <div class="contact-form-grid">
                         <div class="div-block-389">
                           <div id="w-node-ccd9eb93-85e1-76ce-9496-91feb556fb4c-4850b076" class="contact-text-wrapper">
@@ -6409,5 +6409,95 @@
     <!-- Gallery code
 <script src="https://xw8v-tcfi-85ay.n7.xano.io/api:scripttagme/dev/Embed-created-10-1-2024-104941-AM_da9c2556-168d-4b6d-9716-811c89a695b0"></script>-->
     <script src="https://cdn.schema-flow.com/script.min.js" type="text/javascript"></script>
+    
+    <!-- Window Tint Quote form handler -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const quoteForm = document.getElementById('window-tint-quote-form');
+        if (quoteForm) {
+          quoteForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            console.log('Window Tint Quote form submitted!');
+            
+            const submitBtn = this.querySelector('input[type="submit"]');
+            const successDiv = this.parentElement.querySelector('.w-form-done');
+            const errorDiv = this.parentElement.querySelector('.w-form-fail');
+            
+            // Get form field values
+            const name = document.getElementById('Name-5').value.trim();
+            const phone = document.getElementById('Phone-Number').value.trim();
+            const vehicle = document.getElementById('Year-Make-Model').value.trim();
+            const appointmentDate = document.getElementById('Appointment-Date').value.trim();
+            const services = document.getElementById('Notes').value.trim();
+            
+            console.log('Form data:', { name, phone, vehicle, appointmentDate, services });
+            
+            // Hide previous messages
+            successDiv.style.display = 'none';
+            errorDiv.style.display = 'none';
+            
+            // Disable submit button and show loading state
+            submitBtn.disabled = true;
+            const originalValue = submitBtn.value;
+            submitBtn.value = 'Sending...';
+            
+            try {
+              const formData = {
+                name: name,
+                phone: phone,
+                vehicle: vehicle,
+                appointmentDate: appointmentDate,
+                services: services,
+                serviceType: 'Window Tint'
+              };
+              
+              console.log('Sending window tint quote data:', formData);
+              
+              const response = await fetch('/service-quote', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+              });
+              
+              console.log('Response status:', response.status);
+              const result = await response.json();
+              console.log('Response data:', result);
+              
+              if (result.success) {
+                // Show success message
+                console.log('Window Tint Quote request sent successfully!');
+                successDiv.style.display = 'block';
+                
+                // Reset form
+                this.reset();
+                
+                // Hide success message after 10 seconds
+                setTimeout(() => {
+                  successDiv.style.display = 'none';
+                }, 10000);
+                
+              } else {
+                // Show error message
+                console.log('Server returned error:', result.message);
+                errorDiv.querySelector('div').textContent = result.message || 'Something went wrong. Please try again.';
+                errorDiv.style.display = 'block';
+              }
+              
+            } catch (error) {
+              console.error('Network/JS Error:', error);
+              errorDiv.querySelector('div').textContent = 'Network error. Please check your connection and try again.';
+              errorDiv.style.display = 'block';
+            }
+            
+            // Re-enable submit button
+            submitBtn.disabled = false;
+            submitBtn.value = originalValue;
+          });
+        }
+      });
+    </script>
+    
   </body>
 </html>
