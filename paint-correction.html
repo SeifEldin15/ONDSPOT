@@ -6809,6 +6809,8 @@
               const result = await response.json();
               
               if (response.ok) {
+                // Set form submission flag
+                sessionStorage.setItem('formSubmitted', 'true');
                 // Redirect to Calendly after successful submission
                 window.location.href = 'https://calendly.com/ondspot/mobile-auto-detailing-appointment';
               } else {
@@ -6972,6 +6974,37 @@
             submitBtn.value = originalValue;
           });
         }
+      });
+    </script>
+    
+    <!-- Handle Schedule Online buttons -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        // Clear form submission flag on page load/refresh
+        sessionStorage.removeItem('formSubmitted');
+        
+        // Handle all Schedule Online buttons with specific data-w-id attributes
+        const scheduleButtons = document.querySelectorAll('a[data-w-id="767e262b-68c6-84e2-dc24-a37c44c683be"], a[data-w-id="f881b484-5ac4-cec5-ac9e-0aaddb2f00f4"]');
+        
+        scheduleButtons.forEach(button => {
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Check if form was submitted
+            const formSubmitted = sessionStorage.getItem('formSubmitted');
+            
+            if (formSubmitted === 'true') {
+              // Form was submitted, redirect to Calendly directly
+              window.location.href = 'https://calendly.com/ondspot/mobile-auto-detailing-appointment';
+            } else {
+              // Form not submitted, show the popup form first
+              const popup = document.querySelector('.popup_wrap_new1');
+              if (popup) {
+                popup.style.display = 'flex';
+              }
+            }
+          });
+        });
       });
     </script>
     
