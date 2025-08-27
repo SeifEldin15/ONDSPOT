@@ -6751,7 +6751,33 @@
     <!-- Handle Schedule Online buttons in pricing section -->
     <script>
       document.addEventListener("DOMContentLoaded", function() {
-        // Handle all Schedule Online buttons
+        // Clear form submission flag on page load/refresh
+        sessionStorage.removeItem('formSubmitted');
+        
+        // Handle all Schedule Online buttons with specific data-w-id attributes (navigation buttons)
+        const navScheduleButtons = document.querySelectorAll('a[data-w-id="767e262b-68c6-84e2-dc24-a37c44c683be"]');
+        
+        navScheduleButtons.forEach(button => {
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Check if form was submitted
+            const formSubmitted = sessionStorage.getItem('formSubmitted');
+            
+            if (formSubmitted === 'true') {
+              // Form was submitted, redirect to Calendly directly
+              window.location.href = 'https://calendly.com/ondspot/mobile-auto-detailing-appointment';
+            } else {
+              // Form not submitted, show the popup form first
+              const popup = document.querySelector('.popup_wrap_new1');
+              if (popup) {
+                popup.style.display = 'flex';
+              }
+            }
+          });
+        });
+        
+        // Handle all Schedule Online buttons in pricing section
         const scheduleButtons = document.querySelectorAll('a[data-w-id*="64c87c36-3e93-14b2-4431-6d86b9301d"]');
         
         scheduleButtons.forEach(button => {
@@ -6924,6 +6950,8 @@
           console.log('Response data:', result);
           
           if (result.success) {
+            // Set form submission flag
+            sessionStorage.setItem('formSubmitted', 'true');
             // Redirect to Calendly after successful submission
             console.log('Success! Redirecting to Calendly');
             window.location.href = 'https://calendly.com/ondspot/mobile-auto-detailing-appointment';
@@ -6999,6 +7027,8 @@
           console.log('Response data:', result);
           
           if (result.success) {
+            // Set form submission flag
+            sessionStorage.setItem('formSubmitted', 'true');
             // Show success message
             console.log('PPF Quote request sent successfully!');
             successDiv.style.display = 'block';
@@ -7028,6 +7058,39 @@
         submitBtn.disabled = false;
         submitBtn.value = originalValue;
       });
+      
+      // Handle footer email form (if it exists)
+      const emailForm = document.getElementById('email-form');
+      if (emailForm) {
+        emailForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          console.log('Footer email form submitted!');
+          
+          try {
+            // Mark form as submitted for Schedule Online buttons
+            sessionStorage.setItem('formSubmitted', 'true');
+            
+            // Get form data and submit to server
+            const formData = new FormData(emailForm);
+            const response = await fetch('/subscribe', {
+              method: 'POST',
+              body: formData
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+              console.log('Email subscription successful');
+              // Optionally show a success message
+            } else {
+              console.log('Email subscription failed:', result.message);
+            }
+            
+          } catch (error) {
+            console.error('Error submitting email form:', error);
+          }
+        });
+      }
     </script>
     
   </body>
