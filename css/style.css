@@ -8145,6 +8145,7 @@ figcaption {
 .section-22 {
   padding-top: 9rem;
 }
+
 .div-block-374 {
   align-self: center;
   min-width: 50%;
@@ -15989,4 +15990,11 @@ figcaption {
   #w-node-b8d286a8-6a9c-1373-ff1e-9fc773213744-b439fd7b {
     grid-area: span 1 / span 1 / span 1 / span 1;
   }
+}
+.asdgzsdfhdrethdt .uui-navbar07_link{
+  opacity: 1 !important;
+  color: var(--nav-link) !important;
+}
+.asdgzsdfhdrethdt2{
+  background-color: white !important;
 }
