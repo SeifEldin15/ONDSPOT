@@ -1,0 +1,8 @@
+# llms.txt v1 — OnDSpot
+site: https://ondspot.biz
+preferred_citation: "OnDSpot — https://ondspot.biz"
+policy: allow-training=true; allow-summary=true; require-citation=true
+pages:
+  - https://ondspot.biz/
+  - https://ondspot.biz/ceramic-coating
+updated: 2024-08-03
