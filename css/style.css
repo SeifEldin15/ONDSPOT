@@ -4541,7 +4541,7 @@ figcaption {
   flex: none;
   justify-content: center;
   align-items: center;
-  width: 6rem;
+  width: 8rem;
   display: flex;
   position: relative;
 }
