@@ -1,0 +1,19 @@
+{
+  "name": "OnDSpot Mobile Car Detailing",
+  "short_name": "OnDSpot",
+  "icons": [
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#e67e0b",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
