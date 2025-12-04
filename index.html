@@ -38,20 +38,34 @@
     <link rel="dns-prefetch" href="https://calendly.com" />
     
     <!-- Preload critical LCP image -->
-    <link rel="preload" href="68791f7a013d29cc194e25ea_brandmark-design (6).webp" as="image" type="image/webp" fetchpriority="high" />
+    <link rel="preload" href="logo-optimized.webp" as="image" type="image/webp" fetchpriority="high" />
+    
+    <!-- Preload hero background video for faster LCP -->
+    <link rel="preload" href="Background.mp4" as="video" type="video/mp4" />
     
     <!-- Critical CSS inline for above-the-fold content -->
     <style id="critical-css">
-      /* Critical CSS for first paint */
+      /* Critical CSS for first paint - expanded for hero section */
       *{box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
       html{font-family:Inter,sans-serif;font-size:16px;line-height:1.5}
-      body{margin:0;min-height:100vh;background-color:#fff}
+      body{margin:0;min-height:100vh;background-color:#fff;color:#101828}
       .page-wrapper{opacity:1!important}
       .w-nav{position:relative;background:#000;z-index:1000}
-      .container-medium,.container-small,.container-large{margin-right:auto!important;margin-left:auto!important}
+      .container-medium,.container-small,.container-large{margin-right:auto!important;margin-left:auto!important;max-width:1200px;padding:0 24px}
       img,video{max-width:100%;height:auto;display:block}
-      .w-button{display:inline-block;padding:9px 15px;background-color:#e67e0b;color:#fff;border:0;text-decoration:none;cursor:pointer}
-      .hero-section{position:relative;min-height:80vh}
+      .w-button,.uui-button{display:inline-block;padding:12px 24px;background-color:#e67e0b;color:#fff;border:0;border-radius:8px;text-decoration:none;cursor:pointer;font-weight:600}
+      .hero-section,.section-2{position:relative;min-height:80vh}
+      .background-video{position:absolute;inset:0;overflow:hidden}
+      .background-video video{width:100%;height:100%;object-fit:cover}
+      .hero-fixed-inner{position:relative;z-index:10;padding:60px 0}
+      .uui-heroheader10_content{max-width:600px}
+      h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.2;margin:0 0 16px}
+      .text-size-large{font-size:1.125rem;margin-bottom:24px}
+      .cc_navbar{position:fixed;top:0;left:0;right:0;padding:12px 0}
+      .uui-logo_component{display:flex;align-items:center}
+      .uui-navbar07_menu{display:flex;align-items:center;gap:24px}
+      .uui-navbar07_link{color:#fff;text-decoration:none;font-size:14px}
+      @media(max-width:991px){.uui-navbar07_menu{display:none}}
     </style>
     
     <!-- Defer main CSS loading - using minified version -->
@@ -375,7 +389,7 @@
                 <a href="/" aria-current="page" class="uui-navbar07_logo-link w-nav-brand w--current">
                   <div class="uui-logo_component">
                     <div class="uui-logo_logomark">
-                      <img src="68791f7a013d29cc194e25ea_brandmark-design (6).webp" loading="eager" fetchpriority="high" alt="OnDSpot Logo" sizes="160px" srcset="68791f7a013d29cc194e25ea_brandmark-design (6).webp 200w" width="160" height="120" class="uui-styleguide_logomark-bg-2" />
+                      <img src="logo-optimized.webp" loading="eager" fetchpriority="high" alt="OnDSpot Logo" width="160" height="120" class="uui-styleguide_logomark-bg-2" />
                     </div>
                     <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/66f964cbc508944cf9f57dde_untitled-ui-logo.avif" loading="lazy" alt="Logo" class="uui-logo_image" />
                   </div>
@@ -621,7 +635,7 @@
               </div>
               <div class="text-align-center">
                 <div class="uui-max-width-large align-center">
-                  <img src="68791f7a013d29cc194e25ea_brandmark-design (6).webp" loading="lazy" sizes="(max-width: 3125px) 100vw, 3125px" srcset="68791f7a013d29cc194e25ea_brandmark-design (6).webp" alt="OnDSpot Mobile Car Detailing Logo" width="200" height="80" class="modal_logo" />
+                  <img src="logo-optimized.webp" loading="lazy" sizes="(max-width: 3125px) 100vw, 3125px" srcset="logo-optimized.webp" alt="OnDSpot Mobile Car Detailing Logo" width="200" height="80" class="modal_logo" />
                   <h2 class="heading-medium">Book an appointment</h2>
                   <p>Verify your phone number below toÂ getÂ started.</p>
                 </div>
@@ -768,8 +782,8 @@
                   </div>
                 </div>
                 <div data-poster-url="Background.mp4" data-video-urls="Background.mp4" data-autoplay="true" data-loop="true" data-wf-ignore="true" data-w-id="a98abab7-825d-001f-585c-700b28a31270" class="background-video w-background-video w-background-video-atom">
-                  <video id="a98abab7-825d-001f-585c-700b28a31270-video" autoplay="" loop="" style="background-image:url(&quot;Background.mp4&quot;)" muted="" playsinline="" data-wf-ignore="true" data-object-fit="cover">
-                    <source src="Background.mp4" data-wf-ignore="true" />
+                  <video id="a98abab7-825d-001f-585c-700b28a31270-video" autoplay="" loop="" muted="" playsinline="" data-wf-ignore="true" data-object-fit="cover" preload="auto">
+                    <source src="Background.mp4" type="video/mp4" data-wf-ignore="true" />
                   </video>
                 </div>
               </section>
@@ -851,7 +865,7 @@
                           <img loading="lazy" src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/66fb1cd28d11b91b2a7564bb_plus.svg" alt="" />
                         </div>
                         <div class="property-image-wrapper">
-                          <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/68069d49296bbecddaa3b543_CarDetailing_498.jpg" loading="lazy" sizes="(max-width: 6703px) 100vw, 6703px" srcset="2.webp" alt="OnDSpot mobile car detailing service in Fresno showing professional hassle-free service" width="6703" height="4000" class="property-image" />
+                          <img src="2.webp" loading="lazy" sizes="(max-width: 768px) 100vw, 400px" alt="OnDSpot mobile car detailing service in Fresno showing professional hassle-free service" width="800" height="533" class="property-image" />
                           <div class="property-overlay"></div>
                         </div>
                       </div>
@@ -878,7 +892,7 @@
                           <img loading="lazy" src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/66fb1cd28d11b91b2a7564bb_plus.svg" alt="" />
                         </div>
                         <div class="property-image-wrapper">
-                          <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67ae2c3f852b16f674df4401_Edited_1.10.1-min.jpg" loading="lazy" sizes="(max-width: 6000px) 100vw, 6000px" srcset="1.webp" alt="OnDSpot certified professional car detailers providing quality service in Fresno" width="6000" height="4000" class="property-image" />
+                          <img src="1.webp" loading="lazy" sizes="(max-width: 768px) 100vw, 400px" alt="OnDSpot certified professional car detailers providing quality service in Fresno" width="800" height="533" class="property-image" />
                           <div class="property-overlay"></div>
                         </div>
                       </div>
@@ -905,7 +919,7 @@
                           <img loading="lazy" src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/66fb1cd28d11b91b2a7564bb_plus.svg" alt="" />
                         </div>
                         <div class="property-image-wrapper">
-                          <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/68069e7a8bf1acbe01fc81eb_CarDetailing_079.jpg" loading="lazy" sizes="(max-width: 6104px) 100vw, 6104px" srcset="3.webp" alt="OnDSpot car detailing using premium quality products for master quality and care" width="6104" height="4000" class="property-image" />
+                          <img src="3.webp" loading="lazy" sizes="(max-width: 768px) 100vw, 400px" alt="OnDSpot car detailing using premium quality products for master quality and care" width="800" height="533" class="property-image" />
                           <div class="property-overlay"></div>
                         </div>
                       </div>
@@ -4256,12 +4270,12 @@
 	" />
                                   </svg>
                                 </div>
-                                <img data-w-id="aeff7565-c2b3-eb54-4aec-90741220947e" loading="eager" alt="OnDSpot car detailing results showcasing pristine vehicle finish in Fresno" width="800" height="600" src="car1.webp" sizes="100vw" srcset="car1.webp" class="image-modal" />
+                                <img data-w-id="aeff7565-c2b3-eb54-4aec-90741220947e" loading="lazy" alt="OnDSpot car detailing results showcasing pristine vehicle finish in Fresno" width="800" height="600" src="car1.webp" sizes="(max-width: 768px) 100vw, 800px" class="image-modal" />
                               </div>
                             </div>
                           </div>
                           <div href="#" data-w-id="aeff7565-c2b3-eb54-4aec-90741220947f" class="gallery-card">
-                            <img data-w-id="aeff7565-c2b3-eb54-4aec-907412209480" height="Auto" alt="OnDSpot car detailing results showcasing pristine vehicle finish in Fresno" width="800" height="600" src="car1.webp" loading="eager" sizes="100vw" srcset="car1.webp" class="image" />
+                            <img data-w-id="aeff7565-c2b3-eb54-4aec-907412209480" height="Auto" alt="OnDSpot car detailing results showcasing pristine vehicle finish in Fresno" width="800" height="600" src="car1.webp" loading="lazy" sizes="(max-width: 768px) 100vw, 800px" class="image" />
                             <div class="gallery-overlay_badge">
                               <div class="gallery-author">
                    
@@ -4400,12 +4414,12 @@
 	" />
                                   </svg>
                                 </div>
-                                <img data-w-id="aeff7565-c2b3-eb54-4aec-90741220947e" loading="lazy" alt="" src="car5.webp" sizes="100vw" srcset="car5.webp" class="image-modal" />
+                                <img data-w-id="aeff7565-c2b3-eb54-4aec-90741220947e" loading="lazy" alt="OnDSpot interior cleaning and detailing services in Fresno" src="car5.webp" sizes="(max-width: 768px) 100vw, 800px" class="image-modal" />
                               </div>
                             </div>
                           </div>
                           <div href="#" data-w-id="aeff7565-c2b3-eb54-4aec-90741220947f" class="gallery-card">
-                            <img data-w-id="aeff7565-c2b3-eb54-4aec-907412209480" height="Auto" alt="OnDSpot interior cleaning and detailing services in Fresno showing pristine results" width="800" height="600" src="car5.webp" loading="lazy" sizes="100vw" srcset="car5.webp" class="image" />
+                            <img data-w-id="aeff7565-c2b3-eb54-4aec-907412209480" height="Auto" alt="OnDSpot interior cleaning and detailing services in Fresno showing pristine results" width="800" height="600" src="car5.webp" loading="lazy" sizes="(max-width: 768px) 100vw, 800px" class="image" />
                             <div class="gallery-overlay_badge">
                               <div class="gallery-author">
                
@@ -7537,7 +7551,7 @@
                   </div>
                   <div class="text-align-center">
                     <div class="uui-max-width-large align-center">
-                      <img src="68791f7a013d29cc194e25ea_brandmark-design (6).webp" loading="lazy" sizes="(max-width: 3125px) 100vw, 3125px" srcset="68791f7a013d29cc194e25ea_brandmark-design (6).webp" alt="" class="modal_logo" />
+                      <img src="logo-optimized.webp" loading="lazy" sizes="(max-width: 3125px) 100vw, 3125px" srcset="logo-optimized.webp" alt="" class="modal_logo" />
                       <h2 class="heading-medium">Book an appointment</h2>
                       <p>Verify your phone number below toÂ getÂ started.</p>
                     </div>
@@ -7753,7 +7767,7 @@
                 <a href="#" id="w-node-_387e8035-39c8-9ccb-5efa-cf4987a3bf5b-87a3bf55" class="uui-footer08_logo-link w-nav-brand">
                   <div class="uui-logo_component">
                     <div class="footer-logo">
-                      <img src="68791f7a013d29cc194e25ea_brandmark-design (6).webp" loading="eager" height="" alt="Untitled UI logomark" sizes="(max-width: 479px) 98vw, (max-width: 3001px) 100vw, 3001px" srcset="68791f7a013d29cc194e25ea_brandmark-design (6).webp" class="uui-styleguide_logomark-bg-2-copy" />
+                      <img src="logo-optimized.webp" loading="eager" height="" alt="Untitled UI logomark" sizes="(max-width: 479px) 98vw, (max-width: 3001px) 100vw, 3001px" srcset="logo-optimized.webp" class="uui-styleguide_logomark-bg-2-copy" />
                     </div>
                     <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/66f964cbc508944cf9f57dde_untitled-ui-logo.avif" loading="lazy" alt="Logo" class="uui-logo_image" />
                   </div>
@@ -7839,7 +7853,7 @@
         <div class="popup-bg">
           <div class="w-layout-vflex popup-box-2">
             <div class="popup-box-content">
-              <img loading="lazy" src="68791f7a013d29cc194e25ea_brandmark-design (6).webp" alt="" class="popup-box-logo" />
+              <img loading="lazy" src="logo-optimized.webp" alt="" class="popup-box-logo" />
               <h3 class="popup-title">Ready for that new car feeling?</h3>
               <p class="popup-subtitle">Enter Your Information Below To Get Started</p>
               <div class="popup-form w-form">
