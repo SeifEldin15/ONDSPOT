@@ -69,6 +69,12 @@
       /* Optimize animations for GPU compositing */
       [data-w-id]{will-change:transform,opacity;transform:translateZ(0)}
       .w-lightbox-spinner{will-change:transform}
+      /* Reserve space for images to prevent CLS */
+      .property-image{aspect-ratio:800/533}
+      .image,.image-modal{aspect-ratio:4/3}
+      .uui-avatar-group_item{aspect-ratio:1/1}
+      .modal_logo{aspect-ratio:4/3}
+      .pricing-image-top,.pricing-image-bot{aspect-ratio:auto}
     </style>
     
     <!-- Defer main CSS loading - using minified version -->
@@ -394,7 +400,7 @@
                     <div class="uui-logo_logomark">
                       <img src="logo-optimized.webp" loading="eager" fetchpriority="high" alt="OnDSpot Logo" width="160" height="120" class="uui-styleguide_logomark-bg-2" />
                     </div>
-                    <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/66f964cbc508944cf9f57dde_untitled-ui-logo.avif" loading="lazy" alt="Logo" class="uui-logo_image" />
+                    <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/66f964cbc508944cf9f57dde_untitled-ui-logo.avif" loading="lazy" alt="Logo" width="120" height="40" class="uui-logo_image" />
                   </div>
                 </a>
               <nav role="navigation" class="uui-navbar07_menu w-nav-menu">
@@ -4568,7 +4574,7 @@
                             </div>
                           </div>
                           <div href="#" data-w-id="aeff7565-c2b3-eb54-4aec-90741220947f" class="gallery-card">
-                            <img data-w-id="aeff7565-c2b3-eb54-4aec-907412209480" height="Auto" alt="" src="car4.webp" loading="lazy" sizes="100vw" srcset="car4.webp" class="image" />
+                            <img data-w-id="aeff7565-c2b3-eb54-4aec-907412209480" alt="OnDSpot detailing service" src="car4.webp" loading="lazy" width="800" height="600" sizes="(max-width: 768px) 100vw, 800px" class="image" />
                             <div class="gallery-overlay_badge">
                               <div class="gallery-author">
                     
@@ -4641,7 +4647,7 @@
                             </div>
                           </div>
                           <div href="#" data-w-id="aeff7565-c2b3-eb54-4aec-90741220947f" class="gallery-card">
-                            <img data-w-id="aeff7565-c2b3-eb54-4aec-907412209480" height="Auto" alt="" src="car6.webp" loading="lazy" sizes="100vw" srcset="car6.webp" class="image" />
+                            <img data-w-id="aeff7565-c2b3-eb54-4aec-907412209480" alt="OnDSpot car care results" src="car6.webp" loading="lazy" width="800" height="600" sizes="(max-width: 768px) 100vw, 800px" class="image" />
                             <div class="gallery-overlay_badge">
                               <div class="gallery-author">
                           
@@ -4714,7 +4720,7 @@
                             </div>
                           </div>
                           <div href="#" data-w-id="aeff7565-c2b3-eb54-4aec-90741220947f" class="gallery-card">
-                            <img data-w-id="aeff7565-c2b3-eb54-4aec-907412209480" height="Auto" alt="" src="car7.webp" loading="lazy" sizes="100vw" srcset="car7.webp" class="image" />
+                            <img data-w-id="aeff7565-c2b3-eb54-4aec-907412209480" alt="OnDSpot full detailing" src="car7.webp" loading="lazy" width="800" height="600" sizes="(max-width: 768px) 100vw, 800px" class="image" />
                             <div class="gallery-overlay_badge">
                               <div class="gallery-author">
                        
@@ -5066,12 +5072,12 @@
 	" />
                                   </svg>
                                 </div>
-                                <img data-w-id="aeff7565-c2b3-eb54-4aec-90741220947e" loading="lazy" alt="" src="" sizes="100vw" srcset="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/67b280d397e68d625167fedb_image000000-p-500.jpg 500w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/67b280d397e68d625167fedb_image000000-p-800.jpg 800w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/67b280d397e68d625167fedb_image000000-p-1080.jpg 1080w,  1599w" class="image-modal" />
+                                <img data-w-id="aeff7565-c2b3-eb54-4aec-90741220947e" loading="lazy" alt="" src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/67b280d397e68d625167fedb_image000000-p-500.jpg" width="500" height="333" sizes="(max-width: 768px) 100vw, 500px" srcset="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/67b280d397e68d625167fedb_image000000-p-500.jpg 500w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/67b280d397e68d625167fedb_image000000-p-800.jpg 800w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/67b280d397e68d625167fedb_image000000-p-1080.jpg 1080w,  1599w" class="image-modal" />
                               </div>
                             </div>
                           </div>
                           <div href="#" data-w-id="aeff7565-c2b3-eb54-4aec-90741220947f" class="gallery-card">
-                            <img data-w-id="aeff7565-c2b3-eb54-4aec-907412209480" height="Auto" alt="" src="" loading="eager" sizes="100vw" srcset="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/67b280d397e68d625167fedb_image000000-p-500.jpg 500w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/67b280d397e68d625167fedb_image000000-p-800.jpg 800w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/67b280d397e68d625167fedb_image000000-p-1080.jpg 1080w,  1599w" class="image" />
+                            <img data-w-id="aeff7565-c2b3-eb54-4aec-907412209480" alt="" src="" loading="lazy" width="500" height="333" sizes="(max-width: 768px) 100vw, 500px" srcset="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/67b280d397e68d625167fedb_image000000-p-500.jpg 500w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/67b280d397e68d625167fedb_image000000-p-800.jpg 800w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/67b280d397e68d625167fedb_image000000-p-1080.jpg 1080w,  1599w" class="image" />
                             <div class="gallery-overlay_badge">
                               <div class="gallery-author">
                             
@@ -5139,12 +5145,12 @@
 	" />
                                   </svg>
                                 </div>
-                                <img data-w-id="aeff7565-c2b3-eb54-4aec-90741220947e" loading="lazy" alt="" src="" sizes="100vw" srcset="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/6709e516afa177450c6b3759_WhatsApp%20Image%202024-10-03%20at%209.24.28%20PM-p-500.jpeg 500w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/6709e516afa177450c6b3759_WhatsApp%20Image%202024-10-03%20at%209.24.28%20PM-p-800.jpeg 800w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/6709e516afa177450c6b3759_WhatsApp%20Image%202024-10-03%20at%209.24.28%20PM-p-1080.jpeg 1080w,  1600w" class="image-modal" />
+                                <img data-w-id="aeff7565-c2b3-eb54-4aec-90741220947e" loading="lazy" alt="" src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/6709e516afa177450c6b3759_WhatsApp%20Image%202024-10-03%20at%209.24.28%20PM-p-500.jpeg" width="500" height="333" sizes="(max-width: 768px) 100vw, 500px" srcset="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/6709e516afa177450c6b3759_WhatsApp%20Image%202024-10-03%20at%209.24.28%20PM-p-500.jpeg 500w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/6709e516afa177450c6b3759_WhatsApp%20Image%202024-10-03%20at%209.24.28%20PM-p-800.jpeg 800w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/6709e516afa177450c6b3759_WhatsApp%20Image%202024-10-03%20at%209.24.28%20PM-p-1080.jpeg 1080w,  1600w" class="image-modal" />
                               </div>
                             </div>
                           </div>
                           <div href="#" data-w-id="aeff7565-c2b3-eb54-4aec-90741220947f" class="gallery-card">
-                            <img data-w-id="aeff7565-c2b3-eb54-4aec-907412209480" height="Auto" alt="" src="" loading="eager" sizes="100vw" srcset="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/6709e516afa177450c6b3759_WhatsApp%20Image%202024-10-03%20at%209.24.28%20PM-p-500.jpeg 500w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/6709e516afa177450c6b3759_WhatsApp%20Image%202024-10-03%20at%209.24.28%20PM-p-800.jpeg 800w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/6709e516afa177450c6b3759_WhatsApp%20Image%202024-10-03%20at%209.24.28%20PM-p-1080.jpeg 1080w,  1600w" class="image" />
+                            <img data-w-id="aeff7565-c2b3-eb54-4aec-907412209480" alt="" src="" loading="lazy" width="500" height="333" sizes="(max-width: 768px) 100vw, 500px" srcset="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/6709e516afa177450c6b3759_WhatsApp%20Image%202024-10-03%20at%209.24.28%20PM-p-500.jpeg 500w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/6709e516afa177450c6b3759_WhatsApp%20Image%202024-10-03%20at%209.24.28%20PM-p-800.jpeg 800w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d99/6709e516afa177450c6b3759_WhatsApp%20Image%202024-10-03%20at%209.24.28%20PM-p-1080.jpeg 1080w,  1600w" class="image" />
                             <div class="gallery-overlay_badge">
                               <div class="gallery-author">
                    
@@ -5819,8 +5825,8 @@
                                   <div class="uui-pricing09_content-top">
                                     <div class="div-block-381">
                                       <div class="pricing_image-wrap">
-                                        <img loading="lazy" src="6852130908ecc5d50ff674e5_download (11).webp" alt="" class="pricing-image-top" />
-                                        <img sizes="(max-width: 1314px) 100vw, 1314px" srcset="ESiwXmb2V_fss-removebg-preview.webp" alt="" src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/6700a194a24e056407ba3c5a_suv.avif" loading="lazy" class="pricing-image-bot" />
+                                        <img loading="lazy" src="6852130908ecc5d50ff674e5_download (11).webp" alt="Car icon" width="100" height="60" class="pricing-image-top" />
+                                        <img sizes="(max-width: 1314px) 100vw, 1314px" src="ESiwXmb2V_fss-removebg-preview.webp" alt="SUV vehicle" width="200" height="100" loading="lazy" class="pricing-image-bot" />
                                       </div>
                                       <div class="uui-pricing09_price">
                                         <sup>$</sup>168
@@ -6025,8 +6031,8 @@
                                   <div class="uui-pricing09_content-top">
                                     <div class="div-block-381">
                                       <div class="pricing_image-wrap">
-                                        <img loading="lazy" src="6852130908ecc5d50ff674e5_download (11).webp" alt="" class="pricing-image-top" />
-                                        <img sizes="(max-width: 1314px) 100vw, 1314px" srcset="ESiwXmb2V_fss-removebg-preview.webp" alt="" src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/6700a194a24e056407ba3c5a_suv.avif" loading="lazy" class="pricing-image-bot" />
+                                        <img loading="lazy" src="6852130908ecc5d50ff674e5_download (11).webp" alt="Car icon" width="100" height="60" class="pricing-image-top" />
+                                        <img sizes="(max-width: 1314px) 100vw, 1314px" src="ESiwXmb2V_fss-removebg-preview.webp" alt="SUV vehicle" width="200" height="100" loading="lazy" class="pricing-image-bot" />
                                       </div>
                                       <div class="uui-pricing09_price white">
                                         <sup>$</sup>268
@@ -6186,8 +6192,8 @@
                                   <div class="uui-pricing09_content-top">
                                     <div class="div-block-381">
                                       <div class="pricing_image-wrap">
-                                        <img loading="lazy" src="6852130908ecc5d50ff674e5_download (11).webp" alt="" class="pricing-image-top" />
-                                        <img sizes="(max-width: 1314px) 100vw, 1314px" srcset="ESiwXmb2V_fss-removebg-preview.webp" alt="" src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/6700a194a24e056407ba3c5a_suv.avif" loading="lazy" class="pricing-image-bot" />
+                                        <img loading="lazy" src="6852130908ecc5d50ff674e5_download (11).webp" alt="Car icon" width="100" height="60" class="pricing-image-top" />
+                                        <img sizes="(max-width: 1314px) 100vw, 1314px" src="ESiwXmb2V_fss-removebg-preview.webp" alt="SUV vehicle" width="200" height="100" loading="lazy" class="pricing-image-bot" />
                                       </div>
                                       <div class="uui-pricing09_price">
                                         <sup>$</sup>368
@@ -6463,8 +6469,8 @@
                                   <div class="uui-pricing09_content-top">
                                     <div class="div-block-381">
                                       <div class="pricing_image-wrap">
-                                        <img loading="lazy" src="6852130908ecc5d50ff674e5_download (11).webp" alt="" class="pricing-image-top" />
-                                        <img sizes="100vw" srcset="ESiwXmb2V_fss-removebg-preview.webp" alt="" src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/6700a194a24e056407ba3c5a_suv.avif" loading="lazy" class="pricing-image-bot" />
+                                        <img loading="lazy" src="6852130908ecc5d50ff674e5_download (11).webp" alt="Car icon" width="100" height="60" class="pricing-image-top" />
+                                        <img sizes="100vw" src="ESiwXmb2V_fss-removebg-preview.webp" alt="SUV vehicle" width="200" height="100" loading="lazy" class="pricing-image-bot" />
                                       </div>
                                       <div class="uui-pricing09_price">
                                         <sup>$</sup>198
@@ -6591,8 +6597,8 @@
                                   <div class="uui-pricing09_content-top">
                                     <div class="div-block-381">
                                       <div class="pricing_image-wrap">
-                                        <img loading="lazy" src="6852130908ecc5d50ff674e5_download (11).webp" alt="" class="pricing-image-top" />
-                                        <img sizes="100vw" srcset="ESiwXmb2V_fss-removebg-preview.webp" alt="" src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/6700a194a24e056407ba3c5a_suv.avif" loading="lazy" class="pricing-image-bot" />
+                                        <img loading="lazy" src="6852130908ecc5d50ff674e5_download (11).webp" alt="Car icon" width="100" height="60" class="pricing-image-top" />
+                                        <img sizes="100vw" src="ESiwXmb2V_fss-removebg-preview.webp" alt="SUV vehicle" width="200" height="100" loading="lazy" class="pricing-image-bot" />
                                       </div>
                                       <div class="uui-pricing09_price">
                                         <sup>$</sup>298
@@ -6863,8 +6869,8 @@
                                   <div class="uui-pricing09_content-top">
                                     <div class="div-block-381">
                                       <div class="pricing_image-wrap">
-                                        <img loading="lazy" src="6852130908ecc5d50ff674e5_download (11).webp" alt="" class="pricing-image-top" />
-                                        <img sizes="100vw" srcset="ESiwXmb2V_fss-removebg-preview.webp" alt="" src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/6700a194a24e056407ba3c5a_suv.avif" loading="lazy" class="pricing-image-bot" />
+                                        <img loading="lazy" src="6852130908ecc5d50ff674e5_download (11).webp" alt="Car icon" width="100" height="60" class="pricing-image-top" />
+                                        <img sizes="100vw" src="ESiwXmb2V_fss-removebg-preview.webp" alt="SUV vehicle" width="200" height="100" loading="lazy" class="pricing-image-bot" />
                                       </div>
                                       <div class="uui-pricing09_price">
                                         <sup>$</sup>299
@@ -7034,8 +7040,8 @@
                                   <div class="uui-pricing09_content-top">
                                     <div class="div-block-381">
                                       <div class="pricing_image-wrap">
-                                        <img loading="lazy" src="6852130908ecc5d50ff674e5_download (11).webp" alt="" class="pricing-image-top" />
-                                        <img sizes="100vw" srcset="ESiwXmb2V_fss-removebg-preview.webp" alt="" src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/6700a194a24e056407ba3c5a_suv.avif" loading="lazy" class="pricing-image-bot" />
+                                        <img loading="lazy" src="6852130908ecc5d50ff674e5_download (11).webp" alt="Car icon" width="100" height="60" class="pricing-image-top" />
+                                        <img sizes="100vw" src="ESiwXmb2V_fss-removebg-preview.webp" alt="SUV vehicle" width="200" height="100" loading="lazy" class="pricing-image-bot" />
                                       </div>
                                       <div class="uui-pricing09_price">
                                         <sup>$</sup>799
@@ -7237,15 +7243,15 @@
                             <h3 class="text_heading48 text-white">Why Choose ONDSPOT?</h3>
                             <div class="points-box">
                               <div class="services-point">
-                                <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c51892f778e55871020e_image%2046.svg" loading="lazy" alt="" class="image-80" />
+                                <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c51892f778e55871020e_image%2046.svg" loading="lazy" alt="" width="24" height="24" class="image-80" />
                                 <p class="services-para text-color-white pb-none">Your time matters — that’s why OnDSpot comes to you, delivering top-notch mobile detailing wherever you are.</p>
                               </div>
                               <div class="services-point">
-                                <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c51892f778e55871020e_image%2046.svg" loading="lazy" alt="" class="image-80 temp" />
+                                <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c51892f778e55871020e_image%2046.svg" loading="lazy" alt="" width="24" height="24" class="image-80 temp" />
                                 <p class="services-para text-color-white pb-none">We treat your vehicle with expert care, using top-quality, eco-conscious products handled by skilled professionals.</p>
                               </div>
                               <div class="services-point">
-                                <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c51892f778e55871020e_image%2046.svg" loading="lazy" alt="" class="image-80" />
+                                <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c51892f778e55871020e_image%2046.svg" loading="lazy" alt="" width="24" height="24" class="image-80" />
                                 <p class="services-para text-color-white pb-none">Whether it’s a daily driver or a luxury showpiece, every vehicle we touch gets the same top-tier attention and care. </p>
                               </div>
                             </div>
@@ -7255,7 +7261,7 @@
                                 <div class="uui-button-wrapper max-width-full-mobile-landscape">
                                   <div class="uui-button max-width-btn">
                                     <div class="text-block-131">Watch the Video</div>
-                                    <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c80237a55c4b598cba89_Polygon%209.svg" loading="lazy" alt="" class="btn-polygan-img" />
+                                    <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c80237a55c4b598cba89_Polygon%209.svg" loading="lazy" alt="" width="20" height="20" class="btn-polygan-img" />
                                   </div>
                                 </div>
                                 <script type="application/json" class="w-json">
@@ -7277,8 +7283,8 @@
                           </div>
                           <div class="services-image-box">
                             <a href="#" class="lightbox-link w-inline-block w-lightbox">
-                              <img sizes="(max-width: 1430px) 100vw, 1430px" srcset="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c261b4e3900141a73a7a_image-p-500.png 500w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c261b4e3900141a73a7a_image-p-800.png 800w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c261b4e3900141a73a7a_image-p-1080.png 1080w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c261b4e3900141a73a7a_image.png 1430w" alt="" src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c261b4e3900141a73a7a_image.png" loading="lazy" class="services-grid-tab-img" />
-                              <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c2d86fb082fcc8c16204_Polygon%208.svg" loading="lazy" alt="" class="polygan-img" />
+                              <img sizes="(max-width: 1430px) 100vw, 1430px" srcset="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c261b4e3900141a73a7a_image-p-500.png 500w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c261b4e3900141a73a7a_image-p-800.png 800w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c261b4e3900141a73a7a_image-p-1080.png 1080w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c261b4e3900141a73a7a_image.png 1430w" alt="OnDSpot services showcase" src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c261b4e3900141a73a7a_image-p-500.png" loading="lazy" width="500" height="300" class="services-grid-tab-img" />
+                              <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/67b7c2d86fb082fcc8c16204_Polygon%208.svg" loading="lazy" alt="" width="30" height="30" class="polygan-img" />
                               <script type="application/json" class="w-json">
                                 {
                                   "items": [{
@@ -7554,7 +7560,7 @@
                   </div>
                   <div class="text-align-center">
                     <div class="uui-max-width-large align-center">
-                      <img src="logo-optimized.webp" loading="lazy" sizes="(max-width: 3125px) 100vw, 3125px" srcset="logo-optimized.webp" alt="" class="modal_logo" />
+                      <img src="logo-optimized.webp" loading="lazy" alt="OnDSpot Logo" width="160" height="120" class="modal_logo" />
                       <h2 class="heading-medium">Book an appointment</h2>
                       <p>Verify your phone number below to get started.</p>
                     </div>
@@ -7589,7 +7595,7 @@
               <div class="container-medium">
                 <div class="w-layout-grid uui-layout36_component">
                   <div class="uui-layout36_content-left">
-                    <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/66fef5a5255546f70136968b_car-cutout.avif" loading="lazy" sizes="(max-width: 1500px) 100vw, 1500px" srcset="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/66fef5a5255546f70136968b_car-cutout-p-500.avif 500w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/66fef5a5255546f70136968b_car-cutout.avif 1500w" alt="" class="image-71" />
+                    <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/66fef5a5255546f70136968b_car-cutout-p-500.avif" loading="lazy" sizes="(max-width: 767px) 100vw, 500px" srcset="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/66fef5a5255546f70136968b_car-cutout-p-500.avif 500w, https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/66fef5a5255546f70136968b_car-cutout.avif 1500w" alt="Professional car detailing illustration" width="500" height="300" class="image-71" />
                   </div>
                   <div class="uui-layout36_content-right">
                     <div class="uui-max-width-large align-center">
@@ -7770,9 +7776,9 @@
                 <a href="#" id="w-node-_387e8035-39c8-9ccb-5efa-cf4987a3bf5b-87a3bf55" class="uui-footer08_logo-link w-nav-brand">
                   <div class="uui-logo_component">
                     <div class="footer-logo">
-                      <img src="logo-optimized.webp" loading="eager" height="" alt="Untitled UI logomark" sizes="(max-width: 479px) 98vw, (max-width: 3001px) 100vw, 3001px" srcset="logo-optimized.webp" class="uui-styleguide_logomark-bg-2-copy" />
+                      <img src="logo-optimized.webp" loading="lazy" alt="OnDSpot Logo" width="160" height="120" class="uui-styleguide_logomark-bg-2-copy" />
                     </div>
-                    <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/66f964cbc508944cf9f57dde_untitled-ui-logo.avif" loading="lazy" alt="Logo" class="uui-logo_image" />
+                    <img src="https://cdn.prod.website-files.com/66f964cbc508944cf9f57d90/66f964cbc508944cf9f57dde_untitled-ui-logo.avif" loading="lazy" alt="Logo" width="120" height="40" class="uui-logo_image" />
                   </div>
                 </a>
                 <div>
@@ -7856,7 +7862,7 @@
         <div class="popup-bg">
           <div class="w-layout-vflex popup-box-2">
             <div class="popup-box-content">
-              <img loading="lazy" src="logo-optimized.webp" alt="" class="popup-box-logo" />
+              <img loading="lazy" src="logo-optimized.webp" alt="OnDSpot Logo" width="120" height="90" class="popup-box-logo" />
               <h3 class="popup-title">Ready for that new car feeling?</h3>
               <p class="popup-subtitle">Enter Your Information Below To Get Started</p>
               <div class="popup-form w-form">
