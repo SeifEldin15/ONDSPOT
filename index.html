@@ -222,15 +222,27 @@
     .modal_initiate,
     .menu-icon_line-top,
     .menu-icon_line-middle,
-    .menu-icon_line-bottom {
+    .menu-icon_line-bottom,
+    .popup-wrapper,
+    .popup-bg,
+    .popup_wrap_new1,
+    .popup_wrap_new2,
+    .modal_scroll,
+    .modal_container,
+    .uui-navbar07_menu,
+    .modal_close-button,
+    .property-overlay,
+    .property-plus {
       will-change: transform, opacity;
       transform: translateZ(0);
       backface-visibility: hidden;
     }
 
-    /* Optimize marquee animations */
+    /* Optimize marquee and animated sections */
     .marquee-vertical_wrapper,
-    .infinite-rotation-holder-2 {
+    .infinite-rotation-holder-2,
+    .section-rotator,
+    .latest-properties-list {
       contain: layout style paint;
     }
   </style>
@@ -10831,10 +10843,45 @@
       }
     });
   </script>
-  <script src="https://tools.refokus.com/masonry-layout/bundle.v1.0.0.js" defer></script>
+  <!-- Lazy-load masonry script when gallery is visible -->
+  <script>
+    (function () {
+      var masonryLoaded = false;
+      function loadMasonry() {
+        if (masonryLoaded) return;
+        masonryLoaded = true;
+        var s = document.createElement('script');
+        s.src = 'https://tools.refokus.com/masonry-layout/bundle.v1.0.0.js';
+        document.body.appendChild(s);
+      }
+      if ('IntersectionObserver' in window) {
+        var gallery = document.querySelector('.grid');
+        if (gallery) {
+          new IntersectionObserver(function (entries, obs) {
+            if (entries[0].isIntersecting) { loadMasonry(); obs.disconnect(); }
+          }, { rootMargin: '200px' }).observe(gallery);
+        } else { setTimeout(loadMasonry, 5000); }
+      } else { loadMasonry(); }
+    })();
+  </script>
   <!-- Gallery code
 <script src="https://xw8v-tcfi-85ay.n7.xano.io/api:scripttagme/dev/Embed-created-10-1-2024-104941-AM_da9c2556-168d-4b6d-9716-811c89a695b0"></script>-->
-  <script src="https://cdn.schema-flow.com/script.min.js" defer></script>
+  <!-- Schema-flow loaded on idle -->
+  <script>
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(function () {
+        var s = document.createElement('script');
+        s.src = 'https://cdn.schema-flow.com/script.min.js';
+        document.body.appendChild(s);
+      }, { timeout: 3000 });
+    } else {
+      setTimeout(function () {
+        var s = document.createElement('script');
+        s.src = 'https://cdn.schema-flow.com/script.min.js';
+        document.body.appendChild(s);
+      }, 3000);
+    }
+  </script>
 
   <!-- Appointment booking form handler -->
   <script>
