@@ -45,6 +45,8 @@
 
   <!-- Preload critical LCP image -->
   <link rel="preload" href="logo-optimized.webp" as="image" type="image/webp" fetchpriority="high" />
+  <!-- Preload hero background for faster LCP -->
+  <link rel="preload" href="bg.webp" as="image" type="image/webp" fetchpriority="high" />
 
   <!-- Video lazy-loaded on interaction to improve LCP -->
 
@@ -110,13 +112,16 @@
     .hero-section,
     .section-2 {
       position: relative;
-      min-height: 80vh
+      min-height: 80vh;
+      contain: layout style;
     }
 
     .background-video {
       position: absolute;
       inset: 0;
-      overflow: hidden
+      overflow: hidden;
+      /* Prevent layout shift from video loading */
+      contain: strict;
     }
 
     .background-video video {
@@ -232,7 +237,41 @@
     .uui-navbar07_menu,
     .modal_close-button,
     .property-overlay,
-    .property-plus {
+    .property-plus,
+    /* Webflow animation classes */
+    .w-nav-overlay,
+    .w-dropdown-list,
+    .w-dropdown-toggle,
+    .w-tab-content,
+    .w-tab-pane,
+    .w-form-done,
+    .w-form-fail,
+    .w-lightbox-backdrop,
+    .w-lightbox-container,
+    .w-lightbox-content,
+    .w-background-video,
+    /* Form and button animations */
+    .form-block,
+    .input-wrap,
+    .uui-button,
+    .div-block-412,
+    .div-block-413,
+    .div-block-414,
+    /* Hero and content sections */
+    .hero-fixed-inner,
+    .uui-heroheader10_content,
+    .section-2,
+    .cc_hero-fixed,
+    .background-video,
+    /* Navigation elements */
+    .cc_navbar,
+    .cc_nav-wrap,
+    .link-block,
+    /* Card and grid animations */
+    .property-image-wrapper,
+    .property-content-wrapper,
+    .property-details,
+    .packages-card_header {
       will-change: transform, opacity;
       transform: translateZ(0);
       backface-visibility: hidden;
@@ -242,7 +281,9 @@
     .marquee-vertical_wrapper,
     .infinite-rotation-holder-2,
     .section-rotator,
-    .latest-properties-list {
+    .latest-properties-list,
+    .page-wrapper,
+    .main-wrapper {
       contain: layout style paint;
     }
   </style>
