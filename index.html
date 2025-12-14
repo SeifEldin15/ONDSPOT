@@ -52,6 +52,55 @@
 
   <!-- Critical CSS inline for above-the-fold content -->
   <style id="critical-css">
+    /* Loading Screen Styles */
+    #loading-screen {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100vh !important;
+      background: #ffffff;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      z-index: 99999 !important;
+      transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+      pointer-events: auto;
+    }
+    
+    #loading-screen.loaded {
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .loading-spinner {
+      text-align: center;
+    }
+    
+    .spinner {
+      width: 50px;
+      height: 50px;
+      margin: 0 auto 20px;
+      border: 4px solid rgba(230, 126, 11, 0.2);
+      border-top: 4px solid #e67e0b;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .loading-spinner p {
+      color: #e67e0b;
+      font-size: 18px;
+      font-weight: 500;
+      margin: 0;
+      font-family: Inter, sans-serif;
+    }
+    /* End Loading Screen Styles */
+    
     /* Critical CSS for first paint - expanded for hero section */
     * {
       box-sizing: border-box;
@@ -70,6 +119,11 @@
       min-height: 100vh;
       background-color: #fff;
       color: #101828
+    }
+    
+    body.loading {
+      overflow: hidden !important;
+      height: 100vh !important;
     }
 
     .page-wrapper {
@@ -310,6 +364,80 @@
       n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
     }(window, document);
   </script>
+  
+  <!-- Loading Screen Script -->
+  <script>
+    (function() {
+      // Add loading class to body immediately
+      document.documentElement.classList.add('loading');
+      if (document.body) {
+        document.body.classList.add('loading');
+      } else {
+        document.addEventListener('DOMContentLoaded', function() {
+          document.body.classList.add('loading');
+        });
+      }
+      
+      function checkElementsLoaded() {
+        const navbar = document.querySelector('.cc_navbar');
+        const hero = document.querySelector('.hero-fixed-inner, .uui-heroheader10_content');
+        
+        if (navbar && hero) {
+          // Check if elements have actual content/dimensions
+          const navbarLoaded = navbar.offsetHeight > 0;
+          const heroLoaded = hero.offsetHeight > 0;
+          
+          if (navbarLoaded && heroLoaded) {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+              loadingScreen.classList.add('loaded');
+              document.body.classList.remove('loading');
+              document.documentElement.classList.remove('loading');
+              // Remove from DOM after animation completes
+              setTimeout(function() {
+                loadingScreen.remove();
+              }, 500);
+            }
+            return true;
+          }
+        }
+        return false;
+      }
+      
+      // Try to hide loading screen on DOMContentLoaded
+      document.addEventListener('DOMContentLoaded', function() {
+        if (!checkElementsLoaded()) {
+          // If elements aren't ready yet, check periodically
+          const checkInterval = setInterval(function() {
+            if (checkElementsLoaded()) {
+              clearInterval(checkInterval);
+            }
+          }, 100);
+          
+          // Fallback: force hide after 3 seconds
+          setTimeout(function() {
+            clearInterval(checkInterval);
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen && !loadingScreen.classList.contains('loaded')) {
+              loadingScreen.classList.add('loaded');
+              document.body.classList.remove('loading');
+              document.documentElement.classList.remove('loading');
+              setTimeout(function() {
+                loadingScreen.remove();
+              }, 500);
+            }
+          }, 3000);
+        }
+      });
+      
+      // Also check on window load as backup
+      window.addEventListener('load', function() {
+        checkElementsLoaded();
+      });
+    })();
+  </script>
+  <!-- End Loading Screen Script -->
+  
   <!-- Google Tag Manager -->
   <!-- End Google Tag Manager -->
   <!-- Google tag (gtag.js) -->
@@ -446,6 +574,15 @@
 </head>
 
 <body data-w-id="60d3f7b8b0e86c28630fc6d6">
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+      <p>Loading...</p>
+    </div>
+  </div>
+  <!-- End Loading Screen -->
+  
   <div data-w-id="d24e5ea8-78da-f5b7-6dab-ac39945b55b0" class="page-wrapper">
     <div class="global-styles w-embed">
       <style>
@@ -626,6 +763,7 @@
                 loading="lazy" alt="Logo" width="120" height="40" class="uui-logo_image" />
             </div>
           </a>
+
           <nav role="navigation" class="uui-navbar07_menu w-nav-menu">
             <div class="uui-navbar07_menu-left">
               <a href="/car-detailing.html" class="uui-navbar07_link w-nav-link">Car Detailing</a>
