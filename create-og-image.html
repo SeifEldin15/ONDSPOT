@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create OG Image</title>
+</head>
+<body>
+    <canvas id="canvas" width="1200" height="630"></canvas>
+    <br>
+    <a id="download" download="og-image.png">Download Image</a>
+    
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Fill with dark background (matching your site theme)
+        ctx.fillStyle = '#0a0a0a';
+        ctx.fillRect(0, 0, 1200, 630);
+        
+        // Load and draw logo
+        const logo = new Image();
+        logo.onload = function() {
+            // Calculate dimensions to fit logo nicely
+            const maxWidth = 800;
+            const maxHeight = 400;
+            let width = logo.width;
+            let height = logo.height;
+            
+            // Scale down if needed
+            if (width > maxWidth) {
+                height = (maxWidth / width) * height;
+                width = maxWidth;
+            }
+            if (height > maxHeight) {
+                width = (maxHeight / height) * width;
+                height = maxHeight;
+            }
+            
+            // Center the logo
+            const x = (1200 - width) / 2;
+            const y = (630 - height) / 2;
+            
+            ctx.drawImage(logo, x, y, width, height);
+            
+            // Add text
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 48px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('OnDSpot - Mobile Car Detailing', 600, 550);
+            
+            ctx.font = '32px Arial';
+            ctx.fillText('Fresno, CA | (559) 907-0190', 600, 600);
+            
+            // Create download link
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                document.getElementById('download').href = url;
+                
+                // Also convert to WebP
+                canvas.toBlob(function(webpBlob) {
+                    const webpUrl = URL.createObjectURL(webpBlob);
+                    const webpLink = document.createElement('a');
+                    webpLink.download = 'og-image.webp';
+                    webpLink.href = webpUrl;
+                    webpLink.textContent = 'Download WebP';
+                    document.body.appendChild(document.createElement('br'));
+                    document.body.appendChild(webpLink);
+                }, 'image/webp', 0.9);
+            });
+        };
+        logo.src = 'logo-optimized.webp';
+    </script>
+</body>
+</html>
