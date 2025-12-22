@@ -1906,7 +1906,7 @@ textarea.w-select {
 :root {
   --gray900: #101828;
   --gray600: #475467;
-  --secondary-blue: #E26822;
+  --secondary-blue: #e26822;
   --gray500: #667085;
   --gray800: #1d2939;
   --white: white;
@@ -2005,7 +2005,7 @@ textarea.w-select {
   --orange700: #b93815;
   --orange800: #932f19;
   --orange900: #772917;
-  --primary-blue: #E26822;
+  --primary-blue: #e26822;
   --nav-link: #475467;
   --nav-color: #ffffffd6;
   --nav-shadow: #43485300;
@@ -2018,7 +2018,7 @@ textarea.w-select {
   --subheading-purple: #7361cf;
   --form-border: #878f9940;
   --gallery-height: 66rem;
-  --primary-green: #E26822;
+  --primary-green: #e26822;
   --flowui-component-library-gray-500: #6b7094;
   --flowui-component-library-gray-900: #160042;
   --flowui-component-library-gray-100: #f7f9fd;
@@ -4264,7 +4264,7 @@ figcaption {
   text-align: center;
   white-space: nowrap;
   background-image: none;
-  border: 1px solid #E26822;
+  border: 1px solid #e26822;
   border-radius: 0.6rem;
   justify-content: center;
   align-items: center;
@@ -4280,7 +4280,7 @@ figcaption {
 .uui-button:hover {
   border-color: var(--primary-blue);
   background-color: var(--primary-blue);
-  box-shadow: 0 0 20px 5px #E26822, 0 0 0 5px var(--gray100),
+  box-shadow: 0 0 20px 5px #e26822, 0 0 0 5px var(--gray100),
     0 0 0 6px #d0d5dd94;
 }
 .uui-button.is-button-large {
@@ -8970,6 +8970,15 @@ figcaption {
   padding-top: 8rem;
   padding-bottom: 8rem;
 }
+.uui-layout04_component.is--reversed {
+  grid-template-columns: 1fr 1.75fr;
+}
+.uui-layout04_component.is--reversed .uui-layout04_content {
+  order: 2;
+}
+.uui-layout04_component.is--reversed .uui-layout04_image-wrapper {
+  order: 1;
+}
 .form_error-wrap {
   background-color: #ff70702e;
   border-radius: 1rem;
@@ -9831,7 +9840,7 @@ figcaption {
   white-space: nowrap;
   background-color: #e67e0b;
   background-image: none;
-  border: 1px solid #E2682291;
+  border: 1px solid #e2682291;
   border-radius: 0.6rem;
   justify-content: center;
   align-items: center;
@@ -10050,7 +10059,7 @@ figcaption {
   overflow: hidden;
   white-space: nowrap;
 }
- 
+
 .link-block.hero-btn {
   color: var(--white);
 }
@@ -10148,7 +10157,7 @@ figcaption {
   white-space: nowrap;
   background-color: #e67e0b;
   background-image: none;
-  border: 1px solid #E2682291;
+  border: 1px solid #e2682291;
   border-radius: 0.6rem;
   justify-content: center;
   align-items: center;
@@ -10231,7 +10240,7 @@ figcaption {
   white-space: nowrap;
   background-color: #e67e0b;
   background-image: none;
-  border: 1px solid #E2682291;
+  border: 1px solid #e2682291;
   border-radius: 0.6rem;
   justify-content: center;
   align-items: center;
@@ -10831,7 +10840,7 @@ figcaption {
   display: flex;
 }
 popup-box-botm-cntnt-link-2 {
-  color: #E26822;
+  color: #e26822;
   text-decoration: underline;
 }
 .popup-input-field-2 {
@@ -10843,7 +10852,7 @@ popup-box-botm-cntnt-link-2 {
 }
 .popup-input-field-2:focus {
   border-width: 1px;
-  border-color: #E26822;
+  border-color: #e26822;
 }
 .popup-box-2 {
   background-color: #fff;
@@ -10866,7 +10875,7 @@ popup-box-botm-cntnt-link-2 {
   color: #fff;
   text-align: center;
   text-transform: capitalize;
-  background-color: #E26822;
+  background-color: #e26822;
   border-radius: 12px;
   padding: 20px 10px;
   font-size: 1.125rem;
@@ -10964,7 +10973,7 @@ popup-box-botm-cntnt-link-2 {
   text-align: center;
   white-space: nowrap;
   background-image: none;
-  border: 1px solid #E2682291;
+  border: 1px solid #e2682291;
   border-radius: 0.6rem;
   justify-content: center;
   align-items: center;
@@ -11035,7 +11044,7 @@ popup-box-botm-cntnt-link-2 {
   white-space: nowrap;
   background-color: #e67e0b;
   background-image: none;
-  border: 1px solid #E2682291;
+  border: 1px solid #e2682291;
   border-radius: 0.6rem;
   justify-content: center;
   align-items: center;
@@ -15997,12 +16006,12 @@ popup-box-botm-cntnt-link-2 {
     display: flex;
     gap: 2rem;
   }
-  
+
   .locations-bg {
     flex: none;
     width: 100%;
   }
-  
+
   .map-container {
     flex: none !important;
     width: 100% !important;
@@ -16017,7 +16026,7 @@ popup-box-botm-cntnt-link-2 {
     display: flex;
     gap: 1.5rem;
   }
-  
+
   .map-container {
     height: 250px !important;
   }
