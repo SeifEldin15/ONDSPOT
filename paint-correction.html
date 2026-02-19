@@ -7008,7 +7008,7 @@
                 // Set form submission flag
                 sessionStorage.setItem('formSubmitted', 'true');
                 // Redirect to Calendly after successful submission
-                window.location.href = 'https://calendly.com/ondspot/mobile-auto-detailing-appointment';
+                window.location.href = 'https://calendly.com/ondspot/ondspot-appointment';
               } else {
                 throw new Error(result.error || 'Something went wrong');
               }
@@ -7207,7 +7207,7 @@
                 // Set form submission flag
                 sessionStorage.setItem('formSubmitted', 'true');
                 // Redirect to Calendly
-                window.location.href = 'https://calendly.com/ondspot/mobile-auto-detailing-appointment';
+                window.location.href = 'https://calendly.com/ondspot/ondspot-appointment';
               } else {
                 throw new Error(result.error || 'Something went wrong');
               }
@@ -7247,7 +7247,7 @@
             
             if (formSubmitted === 'true') {
               // Form was submitted, redirect to Calendly directly
-              window.location.href = 'https://calendly.com/ondspot/mobile-auto-detailing-appointment';
+              window.location.href = 'https://calendly.com/ondspot/ondspot-appointment';
             } else {
               // Form not submitted, show the popup form first
               const popup = document.querySelector('.popup_wrap_new1');

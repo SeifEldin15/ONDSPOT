@@ -7441,8 +7441,9 @@
             if (phoneInput) {
               phoneInput.addEventListener('input', function(e) {
                   let value = e.target.value.replace(/\D/g, ''); // Remove all non-digits
-                }
               });
+            }
+      });
     </script>
     <script>
       const phoneField = document.getElementById("phone-input");
@@ -7492,13 +7493,20 @@
                 })
               });
               
-              const result = await response.json();
+              let result;
+              try {
+                const text = await response.text();
+                result = JSON.parse(text);
+              } catch (e) {
+                console.error('Server returned non-JSON response:', e);
+                throw new Error('Server error: The backend is not reachable or returned an invalid response.');
+              }
               
               if (response.ok) {
                 // Set form submission flag
                 sessionStorage.setItem('formSubmitted', 'true');
                 // Redirect to Calendly after successful submission
-                window.location.href = 'https://calendly.com/ondspot/mobile-auto-detailing-appointment';
+                window.location.href = 'https://calendly.com/ondspot/ondspot-appointment';
               } else {
                 throw new Error(result.error || 'Something went wrong');
               }
@@ -7548,13 +7556,20 @@
                 })
               });
               
-              const result = await response.json();
+              let result;
+              try {
+                const text = await response.text();
+                result = JSON.parse(text);
+              } catch (e) {
+                console.error('Server returned non-JSON response:', e);
+                throw new Error('Server error: The backend is not reachable or returned an invalid response.');
+              }
               
               if (response.ok) {
                 // Set form submission flag
                 sessionStorage.setItem('formSubmitted', 'true');
                 // Redirect to Calendly
-                window.location.href = 'https://calendly.com/ondspot/mobile-auto-detailing-appointment';
+                window.location.href = 'https://calendly.com/ondspot/ondspot-appointment';
               } else {
                 throw new Error(result.error || 'Something went wrong');
               }
@@ -7702,7 +7717,14 @@
               });
               
               console.log('Response status:', response.status);
-              const result = await response.json();
+              let result;
+              try {
+                const text = await response.text();
+                result = JSON.parse(text);
+              } catch (e) {
+                console.error('Server returned non-JSON response:', e);
+                throw new Error('Server error: The backend is not reachable or returned an invalid response.');
+              }
               console.log('Response data:', result);
               
               if (result.success) {
@@ -7757,7 +7779,7 @@
             
             if (formSubmitted === 'true') {
               // Form was submitted, redirect to Calendly directly
-              window.location.href = 'https://calendly.com/ondspot/mobile-auto-detailing-appointment';
+              window.location.href = 'https://calendly.com/ondspot/ondspot-appointment';
             } else {
               // Form not submitted, show the popup form first
               const popup = document.querySelector('.popup_wrap_new1');
