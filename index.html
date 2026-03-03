@@ -253,7 +253,7 @@
 
     .image,
     .image-modal {
-      aspect-ratio: 4/3
+      object-fit: cover;
     }
 
     .uui-avatar-group_item {
@@ -515,6 +515,7 @@
           height: 35px;
         }
       }
+    }
   </style>
 
 
@@ -10419,6 +10420,7 @@
                       <style>
                         ul {
                           padding-left: 0px !important;
+                        }
                       </style>
                     </div>
                   </div>
@@ -10880,6 +10882,10 @@
 
   <!-- Appointment booking form handler -->
   <script>
+    // Configuration: Set this to your absolute backend URL if frontend is on Webflow
+    // Example: const API_BASE_URL = 'https://your-backend.com';
+    const API_BASE_URL = ''; 
+
     document.getElementById('appointment-form').addEventListener('submit', async function (e) {
       e.preventDefault();
       console.log('Form submitted!');
@@ -10905,7 +10911,7 @@
 
         console.log('Sending data:', formData);
 
-        const response = await fetch('/book-appointment', {
+        const response = await fetch(`${API_BASE_URL}/book-appointment`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -10967,7 +10973,7 @@
 
         console.log('Sending data:', formData);
 
-        const response = await fetch('/book-appointment', {
+        const response = await fetch(`${API_BASE_URL}/book-appointment`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -11079,10 +11085,17 @@
           sessionStorage.setItem('formSubmitted', 'true');
 
           // Get form data and submit to server
-          const formData = new FormData(emailForm);
-          const response = await fetch('/subscribe', {
+          const phoneVal = emailForm.querySelector('[name="Phone-3"]')?.value;
+          const formData = {
+            phone: phoneVal
+          };
+
+          const response = await fetch(`${API_BASE_URL}/subscribe`, {
             method: 'POST',
-            body: formData
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
           });
 
           const result = await response.json();
