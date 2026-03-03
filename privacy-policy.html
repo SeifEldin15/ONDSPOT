@@ -676,7 +676,7 @@
           
           console.log('Sending data:', formData);
           
-          const response = await fetch('/book-appointment', {
+          const response = await fetch('https://api.ondspot.biz/book-appointment', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -738,7 +738,7 @@
           
           console.log('Sending data:', formData);
           
-          const response = await fetch('/book-appointment', {
+          const response = await fetch('https://api.ondspot.biz/book-appointment', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -851,7 +851,7 @@
             
             // Get form data and submit to server
             const formData = new FormData(emailForm);
-            const response = await fetch('/subscribe', {
+            const response = await fetch('https://api.ondspot.biz/subscribe', {
               method: 'POST',
               body: formData
             });
