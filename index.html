@@ -137,6 +137,52 @@
       }
     </style>
     
+  <!-- Loading Screen CSS -->
+  <style id="critical-css">
+    #loading-screen {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100vh !important;
+      background: #ffffff;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      z-index: 99999 !important;
+      transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+      pointer-events: auto;
+    }
+    #loading-screen.loaded {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .loading-spinner {
+      text-align: center;
+    }
+    .spinner {
+      width: 50px;
+      height: 50px;
+      margin: 0 auto 20px;
+      border: 4px solid rgba(230, 126, 11, 0.2);
+      border-top: 4px solid #e67e0b;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .loading-spinner p {
+      color: #e67e0b;
+      font-size: 18px;
+      font-weight: 500;
+      margin: 0;
+      font-family: Inter, sans-serif;
+    }
+  </style>
+  <!-- End Loading Screen CSS -->
+
     <!-- Car Detailing Service Schema -->
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"AutoDetailing","name":"OnDSpot Mobile Car Detailing","url":"https://ondspot.biz/car-detailing","telephone":"+1-559-907-0190","description":"Mobile car detailing services in Fresno CA - interior and exterior packages","areaServed":["Fresno CA","Clovis CA","Sanger CA"],"priceRange":"$168-$468"}
@@ -146,8 +192,70 @@
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"AutoDetailing","name":"OnDSpot LLC","url":"https://ondspot.biz","telephone":"+1-559-907-0190","areaServed":["Fresno CA","Clovis CA","Sanger CA"],"sameAs":["https://www.facebook.com/ondspot", "https://www.instagram.com/ondspot"]}
     </script>
+  <!-- Loading Screen Script -->
+  <script>
+    (function() {
+      document.documentElement.classList.add('loading');
+      if (document.body) {
+        document.body.classList.add('loading');
+      } else {
+        document.addEventListener('DOMContentLoaded', function() {
+          document.body.classList.add('loading');
+        });
+      }
+
+      function checkElementsLoaded() {
+        const navbar = document.querySelector('.cc_navbar');
+        const hero = document.querySelector('.hero-fixed-inner, .uui-heroheader10_content');
+        if (navbar && hero) {
+          const navbarLoaded = navbar.offsetHeight > 0;
+          const heroLoaded = hero.offsetHeight > 0;
+          if (navbarLoaded && heroLoaded) {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+              loadingScreen.classList.add('loaded');
+              document.body.classList.remove('loading');
+              document.documentElement.classList.remove('loading');
+              setTimeout(function() { loadingScreen.remove(); }, 500);
+            }
+            return true;
+          }
+        }
+        return false;
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        if (!checkElementsLoaded()) {
+          const checkInterval = setInterval(function() {
+            if (checkElementsLoaded()) { clearInterval(checkInterval); }
+          }, 100);
+          setTimeout(function() {
+            clearInterval(checkInterval);
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen && !loadingScreen.classList.contains('loaded')) {
+              loadingScreen.classList.add('loaded');
+              document.body.classList.remove('loading');
+              document.documentElement.classList.remove('loading');
+              setTimeout(function() { loadingScreen.remove(); }, 500);
+            }
+          }, 3000);
+        }
+      });
+
+      window.addEventListener('load', function() { checkElementsLoaded(); });
+    })();
+  </script>
+  <!-- End Loading Screen Script -->
   </head>
   <body data-w-id="60d3f7b8b0e86c28630fc6d6">
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+      <p>Loading...</p>
+    </div>
+  </div>
+  <!-- End Loading Screen -->
     <div data-w-id="d24e5ea8-78da-f5b7-6dab-ac39945b55b0" style="opacity:0" class="page-wrapper">
       <div class="global-styles w-embed">
         <style>
