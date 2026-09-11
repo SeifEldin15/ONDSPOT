@@ -30,8 +30,8 @@ files.forEach(file => {
     });
     
     // Update API_BASE_URL in index.html and index2.html if present
-    content = content.split(`const API_BASE_URL = 'http://18.144.57.80:3000';`).join(`const API_BASE_URL = '${NEW_API_URL}';`);
-    content = content.split(`const API_BASE_URL = "http://18.144.57.80:3000";`).join(`const API_BASE_URL = "${NEW_API_URL}";`);
+    content = content.split(`const API_BASE_URL = 'http://54.153.11.241:3000';`).join(`const API_BASE_URL = '${NEW_API_URL}';`);
+    content = content.split(`const API_BASE_URL = "http://54.153.11.241:3000";`).join(`const API_BASE_URL = "${NEW_API_URL}";`);
 
     if (content !== originalContent) {
         fs.writeFileSync(filePath, content, 'utf8');
