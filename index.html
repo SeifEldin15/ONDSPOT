@@ -32,6 +32,8 @@
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#e67e0b" />
   <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <!-- intl-tel-input for phone flag picker -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/css/intlTelInput.css" />
   <link href="https://fonts.googleapis.com" rel="preconnect" />
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous" />
 
@@ -714,9 +716,9 @@
             </div>
             <div class="form-block w-form">
               <form method="post" class="form" name="appointment-form" id="appointment-form">
-                <div id="w-node-_3c71872d-ee37-e79e-2583-f7d13bfde83a-3bfde838" class="input-wrap is--cc_hide-tablet">
+                <div id="w-node-_3c71872d-ee37-e79e-2583-f7d13bfde83a-3bfde838" class="input-wrap is--cc_hide-tablet" style="flex:1;">
                   <input class="input w-input" maxlength="256" name="phone" placeholder="Enter your phone number"
-                    minlength="10" type="tel" id="phone" required="" />
+                    minlength="10" type="tel" id="phone" required="" style="width:100%;" />
                 </div>
                 <div class="hidden-errors" id="error-message" style="display: none;">
                   <div class="ms-code-validation-error w-richtext">
@@ -11006,7 +11008,9 @@
       const errorText = document.getElementById('error-text');
       const phoneInput = document.getElementById('phone');
 
-      console.log('Phone input value:', phoneInput.value);
+      // Get full international number if intl-tel-input is active, else fallback
+      const phoneVal = (window._itiPhone ? window._itiPhone.getNumber() : phoneInput.value).trim();
+      console.log('Phone input value:', phoneVal);
 
       // Hide any previous errors
       errorDiv.style.display = 'none';
@@ -11017,7 +11021,7 @@
 
       try {
         const formData = {
-          phone: phoneInput.value.trim()
+          phone: phoneVal
         };
 
         console.log('Sending data:', formData);
@@ -11223,6 +11227,22 @@
         }
       });
     }
+  </script>
+
+  <!-- intl-tel-input init -->
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/js/intlTelInput.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var phoneEl = document.getElementById('phone');
+      if (phoneEl && typeof intlTelInput !== 'undefined') {
+        window._itiPhone = intlTelInput(phoneEl, {
+          initialCountry: 'us',
+          onlyCountries: ['us', 'ca', 'gb', 'au', 'mx'],
+          utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/js/utils.js',
+          separateDialCode: true
+        });
+      }
+    });
   </script>
 
   <!-- Video Lazy Loading - loads after user interaction or 3 seconds -->
